@@ -50,7 +50,7 @@ export default function Collection() {
         )}
       </header>
 
-      <section className='w-full grid'>
+      <section className='w-full grid pb-24'>
         <div className='grid-flex-row grid grid-cols-2 divide-x divide-black md:grid-cols-3 lg:grid-cols-4'>
           {collection.products.nodes.map((product) => (
             <ProductCard key={product.id} product={product} />
@@ -82,7 +82,7 @@ const QUERY = gql`
         height
         altText
       }
-      products(first: 13) {
+      products(first: 12) {
         nodes {
           id
           title

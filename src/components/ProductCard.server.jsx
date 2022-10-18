@@ -11,7 +11,7 @@ export default function ProductCard({ product }) {
       <div className='grid border-b border-black'>
         <div className='relative'>
           {isDiscounted && (
-            <label className='subpixel-antialiased absolute top-0 right-0 m-4 text-right text-notice bg-red-600 px-2 py-1 text-white text-xs'>
+            <label className='subpixel-antialiased absolute top-0 right-0 m-4 text-right text-notice bg-red-600 text-white py-1 px-2 text-xs'>
               Sale
             </label>
           )}
