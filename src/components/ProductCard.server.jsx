@@ -8,18 +8,20 @@ export default function ProductCard({ product }) {
 
   return (
     <Link to={`products/${product.handle}`}>
-      <div className=''>
-        <div className='relative bg-blue-300'>
+      <div className='grid border-b border-black'>
+        <div className='relative'>
           {isDiscounted && (
-            <label className='subpixel-antialiased top-0 right-0 m-4 text-right text-notice text-red-600 text-xs'></label>
+            <label className='subpixel-antialiased absolute top-0 right-0 m-4 text-right text-notice bg-red-600 px-2 py-1 text-white text-xs'>
+              Sale
+            </label>
           )}
           <Image
-            className='aspect-[3/4] md:aspect-[2/3] object-cover'
+            className='aspect-[4/5] overflow-hidden'
             data={product.variants.nodes[0].image}
-            alt={`Virtual product of a ${product.title}`}
+            alt='Alt Tag'
           />
         </div>
-        <div className='grid gap-1 px-6 py-4 bg-red-300'>
+        <div className='grid gap-1 px-6 py-4 '>
           <h3 className='max-w-prose text-copy w-full overflow-hidden whitespace-nowrap text-ellipsis'>
             {product.title}
           </h3>

@@ -35,13 +35,13 @@ export default function Collection() {
       <Suspense>
         <Seo type='collection' data={collection} />
       </Suspense>
-      <header className='grid w-full gap-8 py-8 px-[10px] md:p-6 lg:justify-items-start'>
-        <h1 className='text-4xl whitespace-pre-wrap font-bold inline-block'>
+      <header className='grid w-full gap-8 py-8 border-b border-black  lg:justify-items-start'>
+        <h1 className='text-4xl whitespace-pre-wrap font-bold inline-block px-[10px] md:px-6'>
           {collection.title}
         </h1>
         {collection.description && (
           <div className='flex items-baseline justify-between w-full'>
-            <div>
+            <div className=''>
               <p className='max-w-lg whitespace-pre-wrap inherit text-copy inline-block px-[10px] md:px-6'>
                 {collection.description}
               </p>
@@ -51,7 +51,7 @@ export default function Collection() {
       </header>
 
       <section className='w-full grid'>
-        <div className='grid-flex-row grid grid-cols-2 divide-x divide-y divide-black md:grid-cols-3 lg:grid-cols-4'>
+        <div className='grid-flex-row grid grid-cols-2 divide-x divide-black md:grid-cols-3 lg:grid-cols-4'>
           {collection.products.nodes.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -82,7 +82,7 @@ const QUERY = gql`
         height
         altText
       }
-      products(first: 12) {
+      products(first: 13) {
         nodes {
           id
           title
