@@ -27,7 +27,7 @@ function Drawer({ open, onClose, children }) {
 
         <div className='fixed inset-0'>
           <div className='absolute inset-0 overflow-hidden'>
-            <div className='fixed inset-y-0 right-0 flex max-w-full pl-10'>
+            <div className='fixed inset-y-0 right-0 flex max-w-full pl-0 md:pl-10'>
               <Transition.Child
                 as={Fragment}
                 enter='transform transition ease-in-out duration-300 sm:duration-500'
@@ -39,7 +39,7 @@ function Drawer({ open, onClose, children }) {
               >
                 {/* Dialog is for building custom modals. Below is for our Cart modal. */}
                 <Dialog.Panel className='max-w-lg transform text-left align-middle shadow-xl transition-all antialiased bg-neutral-50'>
-                  <header className='sticky w-96 h-14 md:h-[86px] border-b border-black top-0 flex items-center justify-between px-4 sm:px-[10px] md:px-6'>
+                  <header className='sticky w-96 px-[10px] md:w-104 h-14 md:h-[86px] border-b border-black flex items-center justify-between md:px-11'>
                     <h2
                       id='cart-contents'
                       className='whitespace-pre-wrap max-w-prose font-bold text-lg'
@@ -48,7 +48,7 @@ function Drawer({ open, onClose, children }) {
                     </h2>
                     <button
                       type='button'
-                      className='p-4 -m-4 transition text-primary hover:text-primary/50'
+                      className='p-[10px] md:p-0 transition text-primary hover:text-primary/50'
                       onClick={onClose}
                     >
                       <IconClose aria-label='Close panel' />
