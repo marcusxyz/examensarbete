@@ -33,10 +33,13 @@ export default function Header({ shop }) {
           </div>
           <button
             onClick={openDrawer}
-            className='relative flex items-center justify-center w-8 h-8'
+            className='relative flex items-center justify-center w-16 h-16'
           >
-            <IconBag />
-            <CartBadge />
+            <div className='flex items-center gap-2'>
+              <span>Cart</span>
+              <IconBag />
+              <CartBadge />
+            </div>
           </button>
         </div>
       </header>
