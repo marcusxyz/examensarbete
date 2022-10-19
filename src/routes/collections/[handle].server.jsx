@@ -9,7 +9,7 @@ import {
 
 import { Suspense } from 'react';
 import { Layout } from '../../components/Layout.server';
-import ProductCard from '../../components/ProductCard.server';
+import ProductCard from '../../components/Product/ProductCard.server';
 
 export default function Collection() {
   const { handle } = useRouteParams();
@@ -63,8 +63,6 @@ export default function Collection() {
 
 // A Graphql query that retrieves a collection by its handle.
 
-// The `Seo` component uses the collection's `seo` values, if specified. If not
-// specified, then the component falls back to using the collection's `title` and `description`
 const QUERY = gql`
   query CollectionDetails($handle: String!) {
     collection(handle: $handle) {
