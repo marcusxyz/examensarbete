@@ -36,7 +36,7 @@ export default function Header({ shop }) {
             className='relative flex items-center justify-center w-16 h-16'
           >
             <div className='flex items-center gap-2'>
-              <span>Cart</span>
+              <span className='font-medium'>Cart</span>
               <IconBag />
               <CartBadge />
             </div>
