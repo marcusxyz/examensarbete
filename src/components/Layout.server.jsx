@@ -8,6 +8,9 @@ import {
   Seo,
 } from '@shopify/hydrogen';
 
+/* Component imports */
+import Header from './Header.client';
+
 /**
  * A server component that defines a structure and organization of a page that can be used in different parts of the Hydrogen app
  */
@@ -39,38 +42,7 @@ export function Layout({ children }) {
             Skip to content
           </a>
         </div>
-        <nav
-          role='navigation'
-          className={`flex items-center h-14 md:h-[86px] p-[10px] md:p-6 sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 antialiased border-b border-black ${
-            isHome
-              ? 'bg-white/80 text-black no-underline'
-              : 'bg-white/80 underline'
-          }`}
-        >
-          <div className='flex justify-between w-full'>
-            <div className=''>
-              <Link className='font-medium' to='/'>
-                {shop.name}
-              </Link>
-            </div>
-            <div className='flex gap-8'>
-              <Link className='font-medium' to='/'>
-                Texture
-              </Link>
-              <Link className='font-medium' to='/'>
-                Gallery
-              </Link>
-              <Link className='font-medium' to='/'>
-                About
-              </Link>
-            </div>
-            <div className=''>
-              <Link className='font-medium' to='/'>
-                Cart (0)
-              </Link>
-            </div>
-          </div>
-        </nav>
+        <Header shop={shop} />
 
         <main role='main' id='mainContent' className='flex-grow'>
           <Suspense>{children}</Suspense>

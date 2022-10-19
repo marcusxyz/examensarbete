@@ -30,16 +30,16 @@ function Drawer({ open, onClose, children }) {
             <div className='fixed inset-y-0 right-0 flex max-w-full pl-10'>
               <Transition.Child
                 as={Fragment}
-                enter='transform transition ease-in-out duration-500 sm:duration-700'
+                enter='transform transition ease-in-out duration-300 sm:duration-500'
                 enterFrom='translate-x-full'
                 enterTo='translate-x-0'
-                leave='transform transition ease-in-out duration-500 sm:duration-700'
+                leave='transform transition ease-in-out duration-300 sm:duration-500'
                 leaveFrom='translate-x-0'
                 leaveTo='translate-x-full'
               >
                 {/* Dialog is for building custom modals. Below is for our Cart modal. */}
                 <Dialog.Panel className='max-w-lg transform text-left align-middle shadow-xl transition-all antialiased bg-neutral-50'>
-                  <header className='sticky top-0 flex items-center justify-between px-4 h-24 sm:px-[10px] md:px-6'>
+                  <header className='sticky w-96 h-14 md:h-[86px] border-b border-black top-0 flex items-center justify-between px-4 sm:px-[10px] md:px-6'>
                     <h2
                       id='cart-contents'
                       className='whitespace-pre-wrap max-w-prose font-bold text-lg'
@@ -62,5 +62,56 @@ function Drawer({ open, onClose, children }) {
         </div>
       </Dialog>
     </Transition>
+  );
+}
+
+/* Use for associating arialabelledby with the title*/
+Drawer.Title = Dialog.Title;
+
+export { Drawer };
+
+export function useDrawer(openDefault = false) {
+  const [isOpen, setIsOpen] = useState(openDefault);
+
+  function openDrawer() {
+    setIsOpen(true);
+  }
+
+  function closeDrawer() {
+    setIsOpen(false);
+  }
+
+  return {
+    isOpen,
+    openDrawer,
+    closeDrawer,
+  };
+}
+
+function IconClose() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 20 20'
+      className='w-5 h-5'
+    >
+      <title>Close</title>
+      <line
+        x1='4.44194'
+        y1='4.30806'
+        x2='15.7556'
+        y2='15.6218'
+        stroke='currentColor'
+        strokeWidth='1.25'
+      />
+      <line
+        y1='-0.625'
+        x2='16'
+        y2='-0.625'
+        transform='matrix(-0.707107 0.707107 0.707107 0.707107 16 4.75)'
+        stroke='currentColor'
+        strokeWidth='1.25'
+      />
+    </svg>
   );
 }
