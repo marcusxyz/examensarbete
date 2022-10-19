@@ -9,7 +9,8 @@ export default function Home() {
   return (
     <Layout>
       <Hero />
-      <Suspense fallback={`Loading categories...`}>
+      <Suspense fallback={`Loading content...`}>
+
         <FeaturedCollections />
       </Suspense>
     </Layout>

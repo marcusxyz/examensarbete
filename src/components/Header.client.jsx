@@ -20,9 +20,6 @@ export default function Header({ shop, menu }) {
             <MenuDrawer isOpen={isMenuOpen} onClose={closeMenu} menu={menu} />
             <Drawer open={isOpen} onClose={closeDrawer} title="Cart">
                 <div className="grid">
-                    <Drawer.Title>
-                        <h2 className="sr-only">Cart Drawer</h2>
-                    </Drawer.Title>
                     <CartDetails onClose={closeDrawer} />
                 </div>
             </Drawer>

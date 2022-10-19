@@ -3,10 +3,23 @@
     "target": "es2020",
     "module": "esnext",
     "moduleResolution": "node16",
-    "lib": ["dom", "dom.iterable", "scripthost", "es2020"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "scripthost",
+      "es2020"
+    ],
     "jsx": "react-jsx",
-    "types": ["vite/client"]
+    "types": [
+      "vite/client"
+    ]
   },
-  "exclude": ["node_modules", "dist"],
-  "include": ["**/*.js", "**/*.jsx"]
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "include": [
+    "**/*.js",
+    "**/*.jsx"
+  ]
 }
