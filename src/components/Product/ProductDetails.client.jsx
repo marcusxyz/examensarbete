@@ -40,6 +40,8 @@ export default function ProductDetails({ product }) {
   );
 }
 
+// Change layout for price and product variants
+
 function ProductForm({ product }) {
   const { options, selectedVariant } = useProductOptions();
 
@@ -81,15 +83,14 @@ function ProductForm({ product }) {
         />
       </div>
       <div className='grid items-stretch gap-4'>
-        <PurchaseMarkup />
+        <PurchaseButton />
       </div>
     </form>
   );
 }
 
-function PurchaseMarkup() {
+function PurchaseButton() {
   const { selectedVariant } = useProductOptions();
-  const isOutOfStock = !selectedVariant?.availableForSale || false;
 
   return (
     <>
@@ -98,23 +99,11 @@ function PurchaseMarkup() {
         variantId={selectedVariant.id}
         quantity={1}
         accessibleAddingToCartLabel='Adding item to your cart'
-        disabled={isOutOfStock}
       >
-        <span className='bg-black text-white inline-block rounded-sm font-medium text-center py-3 px-6 max-w-xl leading-none w-full'>
-          {isOutOfStock ? 'Sold out' : 'Add to cart'}
+        <span className='bg-black text-white inline-block rounded-sm font-medium text-center py-6 max-w-xl leading-none w-full'>
+          Add to cart
         </span>
       </AddToCartButton>
-      {isOutOfStock ? (
-        <span className='text-black text-center py-3 px-6 border rounded-sm leading-none '>
-          Available in 2-3 weeks
-        </span>
-      ) : (
-        <BuyNowButton variantId={selectedVariant.id}>
-          <span className='inline-block rounded-sm font-medium text-center py-3 px-6 max-w-xl leading-none border w-full'>
-            Buy it now
-          </span>
-        </BuyNowButton>
-      )}
     </>
   );
 }
@@ -141,7 +130,7 @@ function OptionRadio({ values, name }) {
             />
             <div
               className={`leading-none border-b-[2px] py-1 cursor-pointer transition-all duration-200 ${
-                checked ? 'border-gray-500' : 'border-neutral-50'
+                checked ? 'border-red' : 'border-neutral-50'
               }`}
             >
               {value}
