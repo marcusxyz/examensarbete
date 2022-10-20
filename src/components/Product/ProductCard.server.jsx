@@ -7,7 +7,10 @@ export default function ProductCard({ product }) {
   const isDiscounted = compareAtPrice?.amount > price?.amount;
 
   return (
-    <Link to={`products/${product.handle}`}>
+    <Link
+      to={`products/${product.handle}`}
+      className='last:border-r border-black'
+    >
       <div className='grid border-b border-black'>
         <div className='relative'>
           {isDiscounted && (

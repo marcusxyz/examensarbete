@@ -39,7 +39,7 @@ function Drawer({ open, onClose, children }) {
               >
                 {/* Dialog is for building custom modals. Below is for our Cart modal. */}
                 <Dialog.Panel className='max-w-lg transform text-left align-middle shadow-xl transition-all antialiased bg-neutral-50'>
-                  <header className='sticky w-96 px-[10px] md:w-104 h-14 md:h-[86px] border-b border-black flex items-center justify-between md:px-11'>
+                  <header className='sticky w-96 md:w-[480px] px-[10px] md:w-104 h-14 md:h-[86px] border-b border-black flex items-center justify-between md:px-11'>
                     <h2
                       id='cart-contents'
                       className='whitespace-pre-wrap max-w-prose font-medium text-copy'

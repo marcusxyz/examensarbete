@@ -4,6 +4,7 @@ import {
   useProductOptions,
   ProductPrice,
   BuyNowButton,
+  AddToCartButton,
 } from '@shopify/hydrogen';
 
 export default function ProductDetails({ product }) {
@@ -44,7 +45,6 @@ export default function ProductDetails({ product }) {
 function ProductForm({ product }) {
   const { options, selectedVariant } = useProductOptions();
 
-  const isOutOfStock = !selectedVariant?.availableForSale || false;
   return (
     <form className='grid gap-10'>
       {
@@ -83,13 +83,28 @@ function ProductForm({ product }) {
         />
       </div>
       <div className='grid items-stretch gap-4'>
-        <BuyNowButton variantId={selectedVariant.id}>
-          <span className='bg-black text-white inline-block rounded-sm font-medium text-center py-3 px-6 max-w-xl leading-none w-full border'>
-            Buy it now
-          </span>
-        </BuyNowButton>
+        <PurchaseButton />
       </div>
     </form>
+  );
+}
+
+function PurchaseButton() {
+  const { selectedVariant } = useProductOptions();
+
+  return (
+    <>
+      <AddToCartButton
+        type='button'
+        variantId={selectedVariant.id}
+        quantity={1}
+        accessibleAddingToCartLabel='Adding item to your cart'
+      >
+        <span className='bg-black text-white inline-block rounded-sm font-medium text-center py-6 max-w-xl leading-none w-full'>
+          Add to cart
+        </span>
+      </AddToCartButton>
+    </>
   );
 }
 
@@ -115,7 +130,7 @@ function OptionRadio({ values, name }) {
             />
             <div
               className={`leading-none border-b-[2px] py-1 cursor-pointer transition-all duration-200 ${
-                checked ? 'border-gray-500' : 'border-neutral-50'
+                checked ? 'border-red' : 'border-neutral-50'
               }`}
             >
               {value}
