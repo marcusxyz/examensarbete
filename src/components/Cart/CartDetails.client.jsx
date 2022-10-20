@@ -2,10 +2,7 @@ import {
   useCart,
   useCartLine,
   CartLineProvider,
-  CartShopPayButton,
-  CartLineQuantityAdjustButton,
   CartLinePrice,
-  CartLineQuantity,
   Image,
   Link,
   Money,
@@ -19,12 +16,12 @@ export function CartDetails({ onClose }) {
   }
 
   return (
-    <form className='grid grid-cols-1 grid-rows-[1fr_auto] h-[calc(100vh-6rem)]'>
+    <form className='grid grid-cols-1 grid-rows-[1fr_auto] w-auto divide-y divide-black'>
       <section
         aria-labelledby='cart-contents'
-        className='px-[10px] pb-4 overflow-auto transition md:px-6'
+        className='pb-4 overflow-auto transition'
       >
-        <ul className='grid gap-6 md:gap-10 overflow-y-scroll'>
+        <ul className='grid gap-6 md:gap-10 overflow-y-scroll divide-y divide-black'>
           {lines.map((line) => {
             return (
               <CartLineProvider key={line.id} line={line}>
@@ -34,39 +31,121 @@ export function CartDetails({ onClose }) {
           })}
         </ul>
       </section>
-      <section
-        aria-labelledby='summary-heading'
-        className='p-[10px] border-t md:px-6'
-      >
+      <section aria-labelledby='summary-heading'>
         <OrderSummary />
-        <CartCheckoutActions />
+        <CartCheckoutButton />
       </section>
     </form>
   );
 }
 
-export function CartEmpty() {
-  const { cost } = useCart();
+// Content and styling for empty cart
+export function CartEmpty({ onClose }) {
   return (
     <div className='h-screen divide-y divide-black'>
-      <div className='flex flex-col space-y-7 pt-6 pb-12 md:py-8 px-[10px] md:px-11'>
+      <div className='flex flex-col space-y-7 pt-6 pb-16 px-[10px] md:px-11'>
         <p className='whitespace-prewrap max-w-prose font-medium text-copy'>
           Your shopping cart is empty
         </p>
       </div>
+
+      <OrderSummary />
+      <button
+        onClick={onClose}
+        width='full'
+        className='inline-block font-medium text-center py-6 px-[10px] md:px-11 max-w-xl leading-none bg-black text-white w-full'
+      >
+        Continue shopping
+      </button>
+    </div>
+  );
+}
+
+function CartCheckoutButton() {
+  const { checkoutUrl } = useCart();
+  return (
+    <>
+      <div className='flex flex-col items-center'>
+        <Link
+          to={checkoutUrl}
+          width='full'
+          className='inline-block font-medium text-center py-6 px-[10px] md:px-11 max-w-xl leading-none bg-black text-white w-full'
+        >
+          Go to checkout
+        </Link>
+      </div>
+    </>
+  );
+}
+
+function OrderSummary() {
+  const { cost } = useCart();
+  return (
+    <>
       {/*Use dl, dt, dd for better semantics https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl */}
-      <dl className='space-y-2'>
-        <div className='flex items-center justify-between py-6 px-[10px] md:px-11'>
+      <dl className=''>
+        <div className='flex items-center justify-between pt-6 pb-8 px-[10px] md:px-11'>
           <dt className='font-medium text-copy uppercase'>Total</dt>
           <dd className='pr-[10px]'>
             {cost?.subtotalAmount?.amount ? (
               <Money data={cost?.subtotalAmount} />
             ) : (
-              '0'
+              '$0'
             )}
           </dd>
         </div>
       </dl>
-    </div>
+    </>
+  );
+}
+
+// Content and styling for cart items
+export function CartLineItem() {
+  const { linesRemove } = useCart();
+  const { id: lineId, merchandise } = useCartLine();
+
+  return (
+    <li key={lineId} className='flex gap-2 pt-6'>
+      <div className='flex-shrink-0'>
+        <Image
+          data={merchandise.image}
+          className='object-cover object-center w-[120px] h-[120px]'
+          alt={`Product picture of ${merchandise.product.title}`}
+        />
+      </div>
+
+      <div className='flex grow items-center justify-start pr-[20px] md:pr-11'>
+        <div className='w-full relative grid gap-1'>
+          <div className='flex flex-row justify-between'>
+            <h3 className='font-medium'>
+              <Link to={`/products/${merchandise.product.handle}`}>
+                {merchandise.product.title}
+              </Link>
+            </h3>
+            <span>
+              <CartLinePrice as='span' />
+            </span>
+          </div>
+
+          <div className='flex flex-col justify-start'>
+            {(merchandise?.selectedOptions || []).map((option) => (
+              <span key={option.name}>
+                {option.name}: {option.value}
+              </span>
+            ))}
+          </div>
+
+          <div className='flex items-center justify-end gap-2 mt-auto'>
+            <button
+              type='button'
+              onClick={() => linesRemove(lineId)}
+              className='flex justify-center items-center underline'
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </li>
   );
 }

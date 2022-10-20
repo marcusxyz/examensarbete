@@ -16,9 +16,6 @@ import Header from './Header.client';
  */
 
 export function Layout({ children }) {
-  const { pathname } = useUrl();
-  const isHome = pathname === '/';
-
   const {
     data: { shop },
   } = useShopQuery({
