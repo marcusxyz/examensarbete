@@ -8,12 +8,12 @@ export default function Bestsellers() {
     cache: CacheLong(),
   });
 
-  console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
+  // console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
+  // console.log(products.edges[0].node.variants.edges[0].node);
   // console.log(products.edges);
-  console.log(products.edges[0].node.variants.edges[0].node);
 
   return (
-    <section className='w-full gap-4 md:gap-8 grid p-6 md:p-8 lg:p-12'>
+    <section className='w-full gap-4 md:gap-8 grid'>
       <h2 className='whitespace-pre-wrap max-w-prose font-bold text-lead'>
         Our bestsellers
       </h2>
@@ -27,7 +27,7 @@ export default function Bestsellers() {
               <div className='grid gap-4'>
                 {product?.node.variants.edges[0].node.image && (
                   <Image
-                    className='rounded shadow-border overflow-clip inline-block aspect-[5/4] md:aspect-[3/2] object-cover'
+                    className='shadow-border overflow-clip inline-block aspect-[5/4] md:aspect-[3/2] object-cover'
                     width={'100%'}
                     height={336}
                     alt={`Image of ${product.node.title}`}
