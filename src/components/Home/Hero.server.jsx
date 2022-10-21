@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { gql, useShopQuery, CacheLong, Image } from '@shopify/hydrogen';
 import heroimg from '/hero-img.png';
-import { ButtonLarge } from '../elements/ButtonLarge';
+import { ButtonLarge } from '../Elements/ButtonLarge';
 
 export default function Hero() {
   const {
