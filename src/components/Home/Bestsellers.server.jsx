@@ -8,36 +8,39 @@ export default function Bestsellers() {
     cache: CacheLong(),
   });
 
+
   // console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
   // console.log(products.edges[0].node.variants.edges[0].node);
   // console.log(products.edges);
 
   return (
-    <section className='w-full gap-4 md:gap-8 grid'>
-      <h2 className='whitespace-pre-wrap max-w-prose font-bold text-lead'>
+    <section className='w-full'>
+      <h2 className='text-2xl my-4'>
         Our bestsellers
       </h2>
-      <div className='grid-flow-row grid gap-2 gap-y-6 md:gap-4 lg:gap-6 grid-cols-1 false  sm:grid-cols-3 false false'>
+
+      <div className='grid grid-flow-row gap-y-6 grid-cols-2 false sm:grid-cols-4'>
         {products.edges.map((product) => {
           const productTitle = product.node.title;
           const price = product.node.variants.edges[0].node.priceV2.amount;
-
           return (
-            <Link key={product.node.id} to={`/products/${product.node.handle}`}>
-              <div className='grid gap-4'>
+            <Link key={product.node.id} to={`/products/${product.node.handle}`} className='odd:border-r border-y border-black'>
+              <div className='grid gap-2'>
                 {product?.node.variants.edges[0].node.image && (
                   <Image
-                    className='shadow-border overflow-clip inline-block aspect-[5/4] md:aspect-[3/2] object-cover'
+                    className='overflow-clip inline-block object-cover'
                     width={'100%'}
                     height={336}
                     alt={`Image of ${product.node.title}`}
                     data={product?.node.variants.edges[0].node.image}
                   />
                 )}
-                <h2 className='whitespace-pre-wrap max-w-prose font-medium text-copy'>
-                  {productTitle}
-                </h2>
-                <p>${price}</p>
+                <div className='px-2 pb-2'>
+                  <h2 className='text-sm mb-2'>
+                    {productTitle}
+                  </h2>
+                  <p className='text-md'>${price}</p>
+                </div>
               </div>
             </Link>
           );
@@ -49,7 +52,7 @@ export default function Bestsellers() {
 
 const QUERY = gql`
   query Bestsellers {
-    products(first: 3) {
+    products(first: 4) {
       edges {
         node {
           # Get id, title and handle of the product
@@ -79,3 +82,5 @@ const QUERY = gql`
     }
   }
 `;
+
+

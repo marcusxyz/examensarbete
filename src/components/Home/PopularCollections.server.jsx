@@ -7,19 +7,28 @@ export default function PopularCollections() {
         query: QUERY,
         cache: CacheLong(),
     });
-    console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
-    console.log(collections.nodes[0]);
+    // console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
+    // console.log(collections.nodes[0]);
+
+    //Nedan funkar ej
+
+    // const array = collections.nodes.reduce((a, { collection: { nodes } }) => (
+    //     [...a, ...nodes.map(({ id }) => id)]
+    // ), []);
+
+    // console.log(array);
+
     return (
-        <section className="w-full">
-            <h2 className="whitespace-pre-wrap max-w-prose text-lead">
+        <section className="w-full my-20 px-2">
+            <h2 className="text-md">
                 POPULAR CATEGORIES
             </h2>
-            <div className="">
+            <div className="mt-10">
                 {collections.nodes.map((collection) => {
                     return (
                         <Link key={collection.id} to={`/collections/${collection.handle}`}>
                             <div className="">
-                                <h2 className="">
+                                <h2 className="text-4xl">
                                     {collection.title}
                                 </h2>
                             </div>
