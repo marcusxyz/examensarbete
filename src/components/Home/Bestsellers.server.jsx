@@ -13,11 +13,11 @@ export default function Bestsellers() {
 
   return (
     <section className='w-full grid pb-24'>
-      <div className='flex flex-row justify-between items-center px-[10px] md:px-6 py-8'>
+      <div className='flex flex-row justify-between items-center px-[10px] md:px-6 py-8 border-y border-black'>
         <h2 className='font-medium text-2xl md:text-[32px]'>Our bestsellers</h2>
         {/* <ButtonLarge to={'/textures'} btnName={'All textures'}></ButtonLarge> */}
       </div>
-      <div className='grid-flex-row grid grid-cols-2 divide-x divide-black md:grid-cols-3 lg:grid-cols-4'>
+      <div className='grid-flex-row grid grid-cols-2 gap-[1px] pb-[1px] bg-black md:grid-cols-3 lg:grid-cols-4'>
         {collection.products.nodes.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
