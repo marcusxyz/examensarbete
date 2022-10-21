@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import {
   gql,
   useShopQuery,
@@ -7,10 +8,11 @@ import {
   ShopifyAnalyticsConstants,
 } from '@shopify/hydrogen';
 
-import { Suspense } from 'react';
-import { Layout } from '../../components/Layout.server';
-import ProductCard from '../../components/Product/ProductCard.server';
+// Import components
+import { Layout } from '../components/Layout.server';
+import ProductCard from '../components/Product/ProductCard.server';
 
+// Product list page i.e '/textures'
 export default function Collection() {
   const { handle } = useRouteParams();
 
@@ -36,7 +38,7 @@ export default function Collection() {
         <Seo type='collection' data={collection} />
       </Suspense>
       <header className='grid w-full gap-8 py-8 border-b border-black  lg:justify-items-start'>
-        <h1 className='text-4xl whitespace-pre-wrap font-bold inline-block px-[10px] md:px-6'>
+        <h1 className='text-7xl whitespace-pre-wrap font-bold inline-block px-[10px] md:px-6'>
           {collection.title}
         </h1>
         {collection.description && (
@@ -61,24 +63,16 @@ export default function Collection() {
   );
 }
 
-// A Graphql query that retrieves a collection by its handle.
-
+// Add a Graphql query that retrieves a collection by its handle.
 const QUERY = gql`
   query CollectionDetails($handle: String!) {
     collection(handle: $handle) {
-      id
       title
+      handle
       description
       seo {
         title
         description
-      }
-      image {
-        id
-        url
-        width
-        height
-        altText
       }
       products(first: 12) {
         nodes {
