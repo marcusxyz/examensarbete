@@ -28,8 +28,8 @@ export default function Header({ shop }) {
             </Link>
           </div>
           <div className='flex gap-8'>
-            <Link className='font-medium' to='/textures'>
-              Textures
+            <Link className='font-medium' to='/'>
+              Texture
             </Link>
             <Link className='font-medium' to='/'>
               Gallery

@@ -21,6 +21,7 @@ export default function Hero() {
             height={'100%'}
             alt={`Image of brown kitchen`}
             src={heroimg}
+            loading='lazy'
           />
 
           <div className='flex flex-col md:justify-between gap-4 px-2 lg:px-4 py-4 lg:py-6 border-b md:border-l md:border-b-0 border-black'>
