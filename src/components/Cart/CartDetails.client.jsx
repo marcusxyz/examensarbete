@@ -19,9 +19,9 @@ export function CartDetails({ onClose }) {
     <form className='grid grid-cols-1 grid-rows-[1fr_auto] w-auto divide-y divide-black'>
       <section
         aria-labelledby='cart-contents'
-        className='pb-4 overflow-auto transition'
+        className='overflow-auto transition'
       >
-        <ul className='grid gap-6 md:gap-10 overflow-y-scroll divide-y divide-black'>
+        <ul className='grid overflow-y-scroll divide-y divide-black'>
           {lines.map((line) => {
             return (
               <CartLineProvider key={line.id} line={line}>
@@ -103,9 +103,11 @@ function OrderSummary() {
 export function CartLineItem() {
   const { linesRemove } = useCart();
   const { id: lineId, merchandise } = useCartLine();
+  console.log(merchandise.priceV2.amount);
+  const productPrice = merchandise.priceV2.amount;
 
   return (
-    <li key={lineId} className='flex gap-2 pt-6'>
+    <li key={lineId} className='flex gap-2'>
       <div className='flex-shrink-0'>
         <Image
           data={merchandise.image}
@@ -123,7 +125,11 @@ export function CartLineItem() {
               </Link>
             </h3>
             <span>
-              <CartLinePrice as='span' />
+              {productPrice === '0.0' ? (
+                <div>FREE</div>
+              ) : (
+                <CartLinePrice as='span' />
+              )}
             </span>
           </div>
 

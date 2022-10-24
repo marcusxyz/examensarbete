@@ -13,7 +13,7 @@ import { Layout } from '../components/Layout.server';
 import ProductCard from '../components/Product/ProductCard.server';
 
 // Product list page i.e '/textures'
-export default function Collection() {
+export default function ProductList() {
   const { handle } = useRouteParams();
 
   const {
@@ -65,7 +65,7 @@ export default function Collection() {
 
 // Add a Graphql query that retrieves a collection by its handle.
 const QUERY = gql`
-  query CollectionDetails($handle: String!) {
+  query GetAllProducts($handle: String!) {
     collection(handle: $handle) {
       title
       handle
@@ -74,7 +74,7 @@ const QUERY = gql`
         title
         description
       }
-      products(first: 12) {
+      products(first: 12, sortKey: RELEVANCE) {
         nodes {
           id
           title

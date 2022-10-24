@@ -45,6 +45,9 @@ export default function ProductDetails({ product }) {
 function ProductForm({ product }) {
   const { options, selectedVariant } = useProductOptions();
 
+  // console.log(product.variants.nodes[0].priceV2);
+  const productPrice = product.variants.nodes[0].priceV2.amount;
+
   return (
     <form className='grid gap-10'>
       {
@@ -70,17 +73,15 @@ function ProductForm({ product }) {
         </div>
       }
       <div>
-        <ProductPrice
-          className='text-gray-500 line-through text-lg font-semibold'
-          priceType='compareAt'
-          variantId={selectedVariant.id}
-          data={product}
-        />
-        <ProductPrice
-          className='text-gray-900 text-lg font-semibold'
-          variantId={selectedVariant.id}
-          data={product}
-        />
+        {productPrice === '0.0' ? (
+          <div className='font-semibold'>FREE</div>
+        ) : (
+          <ProductPrice
+            className='text-gray-900 text-lg font-semibold'
+            variantId={selectedVariant.id}
+            data={product}
+          />
+        )}
       </div>
       <div className='grid items-stretch gap-4'>
         <PurchaseButton />
