@@ -4,13 +4,12 @@ export default function ProductCard({ product }) {
   const { priceV2: price, compareAtPriceV2: compareAtPrice } =
     product.variants?.nodes[0] || {};
 
+  // console.log(amount);
+  const amount = price?.amount;
   const isDiscounted = compareAtPrice?.amount > price?.amount;
 
   return (
-    <Link
-      to={`products/${product.handle}`}
-      // className='last:border-r border-black'
-    >
+    <Link to={`products/${product.handle}`}>
       <div className='grid '>
         <div className='relative'>
           {isDiscounted && (
@@ -22,6 +21,7 @@ export default function ProductCard({ product }) {
             className='aspect-[4/5] overflow-hidden'
             data={product.variants.nodes[0].image}
             alt='Alt Tag'
+            loading='lazy'
           />
         </div>
         <div className='grid gap-1 px-6 py-4 bg-white shadow-[0_0_0_1px_black]'>
@@ -29,17 +29,15 @@ export default function ProductCard({ product }) {
             {product.title}
           </h3>
           <div className='flex gap-4'>
-            <span className='text-2xl font-medium max-w-prose whitespace-pre-wrap inherit text-copy flex'>
-              $<Money withoutTrailingZeros withoutCurrency data={price} />
-              {isDiscounted && (
-                <Money
-                  className='line-through opacity-50'
-                  withoutTrailingZeros
-                  withoutCurrency
-                  data={compareAtPrice}
-                />
-              )}
-            </span>
+            {amount === '0.0' ? (
+              <span className='text-2xl font-medium max-w-prose whitespace-pre-wrap inherit text-copy flex'>
+                Free
+              </span>
+            ) : (
+              <span className='text-2xl font-medium max-w-prose whitespace-pre-wrap inherit text-copy flex'>
+                $<Money withoutTrailingZeros withoutCurrency data={price} />
+              </span>
+            )}
           </div>
         </div>
       </div>
