@@ -24,7 +24,7 @@ export default function ProductCard({ product }) {
             alt='Alt Tag'
           />
         </div>
-        <div className='grid gap-1 px-6 py-4 bg-white'>
+        <div className='grid gap-1 px-6 py-4 bg-white shadow-[0_0_0_1px_black]'>
           <h3 className='font-medium max-w-prose text-copy w-full overflow-hidden whitespace-nowrap text-ellipsis'>
             {product.title}
           </h3>
