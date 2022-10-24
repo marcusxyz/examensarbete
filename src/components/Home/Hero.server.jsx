@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { gql, useShopQuery, CacheLong, Image } from '@shopify/hydrogen';
-import heroimg from '/hero-img.png';
-import { ButtonLarge } from '../elements/ButtonLarge';
+import heroimg from '/Veneer002_Promo-02.jpg';
+import { ButtonLarge } from '../Elements/ButtonLarge';
 
 export default function Hero() {
   const {
@@ -16,7 +16,7 @@ export default function Hero() {
       <Suspense>
         <section className='grid grid-cols-1 md:grid-cols-2'>
           <Image
-            className='overflow-clip inline-block object-cover h-[375px] md:h-[600px]'
+            className='overflow-clip inline-block object-cover h-[375px] md:h-[763px]'
             width={'100%'}
             height={'100%'}
             alt={`Image of brown kitchen`}

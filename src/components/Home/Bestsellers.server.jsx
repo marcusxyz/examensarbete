@@ -1,13 +1,15 @@
-import { Link, Image, gql, useShopQuery, CacheLong } from '@shopify/hydrogen';
+import { gql, useShopQuery, CacheLong } from '@shopify/hydrogen';
+import ProductCard from '../Product/ProductCard.server';
+
+import { ButtonLarge } from '../Elements/ButtonLarge';
 
 export default function Bestsellers() {
   const {
-    data: { products },
+    data: { collection },
   } = useShopQuery({
-    query: QUERY,
+    query: BESTSELLER_QUERY,
     cache: CacheLong(),
   });
-
 
   // console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
   // console.log(products.edges[0].node.variants.edges[0].node);
@@ -45,35 +47,51 @@ export default function Bestsellers() {
             </Link>
           );
         })}
+  return (
+    <section className='w-full grid pb-24'>
+      <div className='flex flex-row justify-between items-center px-[10px] md:px-6 py-8 border-y border-black'>
+        <h2 className='font-medium text-2xl md:text-[32px]'>Our bestsellers</h2>
+        {/* <ButtonLarge to={'/textures'} btnName={'All textures'}></ButtonLarge> */}
+      </div>
+      <div className='grid-flex-row grid grid-cols-2 gap-[1px] pb-[1px] bg-black md:grid-cols-3 lg:grid-cols-4'>
+        {collection.products.nodes.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
     </section>
   );
 }
-
-const QUERY = gql`
+const BESTSELLER_QUERY = gql`
   query Bestsellers {
     products(first: 4) {
       edges {
         node {
           # Get id, title and handle of the product
+    collection(handle: "textures") {
+      title
+      handle
+      products(first: 4) {
+        nodes {
           id
           title
+          publishedAt
           handle
-          # Get price and image
           variants(first: 1) {
-            edges {
-              node {
-                id
-                image {
-                  url
-                  altText
-                  width
-                  height
-                }
-                priceV2 {
-                  amount
-                  currencyCode
-                }
+            nodes {
+              id
+              image {
+                url
+                width
+                height
+                altText
+              }
+              priceV2 {
+                amount
+                currencyCode
+              }
+              compareAtPriceV2 {
+                amount
+                currencyCode
               }
             }
           }
