@@ -129,7 +129,9 @@ export function CartLineItem() {
 
           <div className='flex flex-col justify-start'>
             {(merchandise?.selectedOptions || []).map((option) => (
-              <span key={option.name}>{option.value}</span>
+              <span key={option.name}>
+                {option.name}: {option.value}
+              </span>
             ))}
           </div>
 
