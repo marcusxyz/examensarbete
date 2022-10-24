@@ -10,8 +10,8 @@ export default function Bestsellers() {
   });
 
   return (
-    <section className='w-full grid pb-24'>
-      <div className='flex flex-row justify-between items-center px-[10px] md:px-6 py-8 border-y border-black'>
+    <section className='w-full grid'>
+      <div className='flex flex-row justify-between items-center px-[10px] md:px-6 py-8 border-b md:border-y border-black'>
         <h2 className='font-medium text-2xl md:text-[32px]'>Our bestsellers</h2>
         {/* <ButtonLarge to={'/textures'} btnName={'All textures'}></ButtonLarge> */}
       </div>
