@@ -16,26 +16,25 @@ export function CartDetails({ onClose }) {
   }
 
   return (
-    <form className='grid grid-cols-1 grid-rows-[1fr_auto] w-auto divide-y divide-black'>
-      <section
-        aria-labelledby='cart-contents'
-        className='pb-4 overflow-auto transition'
-      >
-        <ul className='grid gap-6 md:gap-10 overflow-y-scroll divide-y divide-black'>
-          {lines.map((line) => {
-            return (
-              <CartLineProvider key={line.id} line={line}>
-                <CartLineItem />
-              </CartLineProvider>
-            );
-          })}
-        </ul>
-      </section>
-      <section aria-labelledby='summary-heading'>
-        <OrderSummary />
-        <CartCheckoutButton />
-      </section>
-    </form>
+    <div className='h-[90vh] overflow-y-auto'>
+      <form className='grid grid-cols-1 grid-rows-[1fr_auto] w-auto divide-y divide-black'>
+        <section aria-labelledby='cart-contents' className='transition'>
+          <ul className='grid divide-y divide-black'>
+            {lines.map((line) => {
+              return (
+                <CartLineProvider key={line.id} line={line}>
+                  <CartLineItem />
+                </CartLineProvider>
+              );
+            })}
+          </ul>
+        </section>
+        <section aria-labelledby='summary-heading'>
+          <OrderSummary />
+          <CartCheckoutButton />
+        </section>
+      </form>
+    </div>
   );
 }
 
@@ -69,7 +68,7 @@ function CartCheckoutButton() {
         <Link
           to={checkoutUrl}
           width='full'
-          className='inline-block font-medium text-center py-6 px-[10px] md:px-11 max-w-xl leading-none bg-black text-white w-full'
+          className='inline-block font-medium text-center py-6 px-[10px] md:px-11 max-w-xl leading-none bg-black text-white w-full uppercase'
         >
           Go to checkout
         </Link>
@@ -85,8 +84,8 @@ function OrderSummary() {
       {/*Use dl, dt, dd for better semantics https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl */}
       <dl className=''>
         <div className='flex items-center justify-between pt-6 pb-8 px-[10px] md:px-11'>
-          <dt className='font-medium text-copy uppercase'>Total</dt>
-          <dd className='pr-[10px]'>
+          <dt className='font-medium text-xl uppercase'>Total</dt>
+          <dd className='pr-[10px] md:pr-0 font-medium text-xl'>
             {cost?.subtotalAmount?.amount ? (
               <Money data={cost?.subtotalAmount} />
             ) : (
@@ -103,9 +102,11 @@ function OrderSummary() {
 export function CartLineItem() {
   const { linesRemove } = useCart();
   const { id: lineId, merchandise } = useCartLine();
+  console.log(merchandise.priceV2.amount);
+  const productPrice = merchandise.priceV2.amount;
 
   return (
-    <li key={lineId} className='flex gap-2 pt-6'>
+    <li key={lineId} className='flex gap-2'>
       <div className='flex-shrink-0'>
         <Image
           data={merchandise.image}
@@ -123,7 +124,11 @@ export function CartLineItem() {
               </Link>
             </h3>
             <span>
-              <CartLinePrice as='span' />
+              {productPrice === '0.0' ? (
+                <div>FREE</div>
+              ) : (
+                <CartLinePrice as='span' />
+              )}
             </span>
           </div>
 

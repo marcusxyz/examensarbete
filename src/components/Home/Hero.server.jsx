@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { gql, useShopQuery, CacheLong, Image } from '@shopify/hydrogen';
 import heroimg from '/Veneer002_Promo-02.jpg';
-import { ButtonLarge } from '../Elements/ButtonLarge';
+import { ButtonSmall } from '../elements/ButtonSmall';
 
 export default function Hero() {
   const {
@@ -21,9 +21,10 @@ export default function Hero() {
             height={'100%'}
             alt={`Image of brown kitchen`}
             src={heroimg}
+            loading='lazy'
           />
 
-          <div className='flex flex-col md:justify-between gap-4 px-2 lg:px-4 py-4 lg:py-6 md:border-l border-b border-black'>
+          <div className='flex flex-col md:justify-between gap-4 px-2 lg:px-4 py-4 lg:py-6 border-b md:border-l md:border-b-0 border-black'>
             <div>
               <h1 className='text-4xl lg:text-5xl xl:text-6xl'>
                 Achieve photorealism with high-resolution textures
@@ -36,7 +37,7 @@ export default function Hero() {
             </div>
 
             <div className='my-4'>
-              <ButtonLarge to='/' btnName='Explore high quality textures' />
+              <ButtonSmall to='/' btnName='Explore high quality textures' />
             </div>
           </div>
         </section>

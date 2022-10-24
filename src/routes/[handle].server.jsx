@@ -13,7 +13,7 @@ import { Layout } from '../components/Layout.server';
 import ProductCard from '../components/Product/ProductCard.server';
 
 // Product list page i.e '/textures'
-export default function Collection() {
+export default function ProductList() {
   const { handle } = useRouteParams();
 
   const {
@@ -37,7 +37,7 @@ export default function Collection() {
       <Suspense>
         <Seo type='collection' data={collection} />
       </Suspense>
-      <header className='grid w-full gap-8 py-8 border-b border-black  lg:justify-items-start'>
+      <header className='grid w-full gap-8 py-8 lg:justify-items-start border-b border-black'>
         <h1 className='text-7xl whitespace-pre-wrap font-bold inline-block px-[10px] md:px-6'>
           {collection.title}
         </h1>
@@ -52,8 +52,8 @@ export default function Collection() {
         )}
       </header>
 
-      <section className='w-full grid pb-24'>
-        <div className='grid-flex-row grid grid-cols-2 divide-x divide-black md:grid-cols-3 lg:grid-cols-4'>
+      <section className='pb-24 mr-[-1px]'>
+        <div className='grid bg-grid-pattern-mobile shadow-[0_0_0_1px_black] md:bg-grid-pattern-tablet lg:bg-grid-pattern-desktop pr-[1px] gap-[1px] grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           {collection.products.nodes.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -65,7 +65,7 @@ export default function Collection() {
 
 // Add a Graphql query that retrieves a collection by its handle.
 const QUERY = gql`
-  query CollectionDetails($handle: String!) {
+  query GetAllProducts($handle: String!) {
     collection(handle: $handle) {
       title
       handle
@@ -74,7 +74,7 @@ const QUERY = gql`
         title
         description
       }
-      products(first: 12) {
+      products(first: 12, sortKey: RELEVANCE) {
         nodes {
           id
           title
