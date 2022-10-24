@@ -23,7 +23,7 @@ export default function Hero() {
             src={heroimg}
           />
 
-          <div className='flex flex-col md:justify-between gap-4 px-2 lg:px-4 py-4 lg:py-6'>
+          <div className='flex flex-col md:justify-between gap-4 px-2 lg:px-4 py-4 lg:py-6 md:border-l border-b border-black'>
             <div>
               <h1 className='text-4xl lg:text-5xl xl:text-6xl'>
                 Achieve photorealism with high-resolution textures
