@@ -1,31 +1,26 @@
 import { Link, Image, Money } from '@shopify/hydrogen';
 
 export default function ProductCard({ product }) {
-  const { priceV2: price, compareAtPriceV2: compareAtPrice } =
-    product.variants?.nodes[0] || {};
+  const { priceV2: price } = product.variants?.nodes[0] || {};
 
   // console.log(amount);
   const amount = price?.amount;
-  const isDiscounted = compareAtPrice?.amount > price?.amount;
+  const alternativeImage = product.variants.nodes[0];
+  console.log(alternativeImage);
 
   return (
-    <Link to={`products/${product.handle}`}>
+    <Link to={`products/${product.handle}`} className='group'>
       <div className='grid '>
-        <div className='relative'>
-          {isDiscounted && (
-            <label className='subpixel-antialiased absolute top-0 right-0 m-4 text-right text-notice bg-red-600 text-white py-1 px-2 text-xs'>
-              Sale
-            </label>
-          )}
+        <div className='relative overflow-hidden'>
           <Image
-            className='aspect-[4/5] overflow-hidden'
+            className='aspect-[4/5] scale-100 group-hover:scale-[1.02] transition-transform duration-[600ms] ease-in-out'
             data={product.variants.nodes[0].image}
-            alt='Alt Tag'
+            alt={`Product image of ${product.title}`}
             loading='lazy'
           />
         </div>
         <div className='grid gap-1 px-6 py-4 bg-white shadow-[0_0_0_1px_black]'>
-          <h3 className='font-medium max-w-prose text-copy w-full overflow-hidden whitespace-nowrap text-ellipsis'>
+          <h3 className='font-medium max-w-prose text-copy w-full overflow-hidden whitespace-nowrap text-ellipsis group-hover:underline'>
             {product.title}
           </h3>
           <div className='flex gap-4'>
