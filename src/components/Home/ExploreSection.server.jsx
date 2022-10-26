@@ -62,7 +62,7 @@ export default function ExploreSection() {
         </div>
       </div>
 
-      <div className='mt-8 lg:mt-4 px-2 py-8 lg:py-4 border-y border-black'>
+      <div className='mt-8 lg:mt-4 px-2 pt-8 lg:py-4 border-t border-black'>
         <p className='lg:max-w-[70%] xl:max-w-[50%]'>
           By using a unique setup for texture scanning, we can capture the
           height and depth of the surface and the very essence of the material.
