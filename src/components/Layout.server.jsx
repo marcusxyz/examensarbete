@@ -3,6 +3,7 @@ import { useShopQuery, CacheLong, gql, Seo } from '@shopify/hydrogen';
 
 /* Component imports */
 import Header from './Header.client';
+import Footer from './Footer.client';
 
 /**
  * A server component that defines a structure and organization of a page that can be used in different parts of the Hydrogen app
@@ -37,6 +38,8 @@ export function Layout({ children }) {
         <main role='main' id='mainContent' className='flex-grow'>
           <Suspense fallback={null}>{children}</Suspense>
         </main>
+
+        <Footer />
       </div>
     </>
   );
