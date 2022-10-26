@@ -3,7 +3,7 @@ import { useShopQuery, CacheLong, gql, Seo } from '@shopify/hydrogen';
 
 /* Component imports */
 import Header from './Header.client';
-import Footer from './Footer.client';
+import Footer from './Footer.server';
 
 /**
  * A server component that defines a structure and organization of a page that can be used in different parts of the Hydrogen app

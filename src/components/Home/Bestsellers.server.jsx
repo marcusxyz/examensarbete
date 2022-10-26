@@ -15,7 +15,7 @@ export default function Bestsellers() {
         <h2 className='font-medium text-2xl md:text-[32px]'>Our bestsellers</h2>
         {/* <ButtonLarge to={'/textures'} btnName={'All textures'}></ButtonLarge> */}
       </div>
-      <div className='grid bg-grid-pattern-mobile md:bg-grid-pattern-tablet lg:bg-grid-pattern-desktop pr-[1px] mr-[-1px] gap-[1px] grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+      <div className='grid bg-grid-pattern-mobile lg:bg-grid-pattern-desktop pr-[1px] mr-[-1px] gap-[1px] grid-cols-2 lg:grid-cols-4'>
         {collection.products.nodes.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
