@@ -39,12 +39,6 @@ const QUERY = gql`
         id
         title
         handle
-        image {
-          altText
-          width
-          height
-          url
-        }
       }
     }
   }
