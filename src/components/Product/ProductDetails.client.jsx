@@ -3,11 +3,11 @@ import {
   MediaFile,
   useProductOptions,
   ProductPrice,
-  BuyNowButton,
   AddToCartButton,
 } from '@shopify/hydrogen';
 
 export default function ProductDetails({ product }) {
+  // console.log(product);
   return (
     <ProductOptionsProvider data={product}>
       <section className='w-full overflow-x-hidden gap-4 md:gap-8 grid border-b border-black'>
@@ -40,10 +40,11 @@ export default function ProductDetails({ product }) {
 // Change layout for price and product variants
 
 function ProductForm({ product }) {
+  // const { options, selectedVariant } = useProductOptions();
   const { options, selectedVariant } = useProductOptions();
 
-  // console.log(product.variants.nodes[0].priceV2);
   const productPrice = product.variants.nodes[0].priceV2.amount;
+  // console.log(options);
 
   return (
     <form className='grid gap-10'>
@@ -54,14 +55,11 @@ function ProductForm({ product }) {
               return null;
             }
             return (
-              <div
-                key={name}
-                className='flex flex-wrap items-baseline justify-start gap-6'
-              >
+              <div key={name} className='flex flex-col justify-start gap-6'>
                 <legend className='whitespace-pre-wrap max-w-prose font-bold text-lead min-w-[4rem]'>
                   {name}
                 </legend>
-                <div className='flex flex-wrap items-baseline gap-4'>
+                <div className='grid items-baseline gap-2'>
                   <OptionRadio name={name} values={values} />
                 </div>
               </div>
@@ -77,6 +75,7 @@ function ProductForm({ product }) {
             className='text-gray-900 text-lg font-semibold'
             variantId={selectedVariant.id}
             data={product}
+            valueType='min'
           />
         )}
       </div>
@@ -98,7 +97,7 @@ function PurchaseButton() {
         quantity={1}
         accessibleAddingToCartLabel='Adding item to your cart'
       >
-        <span className='bg-black text-white inline-block rounded-sm font-medium text-center py-6 max-w-xl leading-none w-full'>
+        <span className='bg-black text-white font-medium text-xl uppercase inline-block rounded-sm text-center py-6 max-w-xl leading-none w-full'>
           Add to cart
         </span>
       </AddToCartButton>
@@ -107,13 +106,14 @@ function PurchaseButton() {
 }
 
 function OptionRadio({ values, name }) {
-  const { selectedOptions, setSelectedOption } = useProductOptions();
-
+  const { variants, selectedOptions, setSelectedOption } = useProductOptions();
   return (
     <>
       {values.map((value) => {
         const checked = selectedOptions[name] === value;
         const id = `option-${name}-${value}`;
+
+        // console.log(value);
 
         return (
           <label key={id} htmlFor={id}>
@@ -127,8 +127,8 @@ function OptionRadio({ values, name }) {
               onChange={() => setSelectedOption(name, value)}
             />
             <div
-              className={`leading-none border-b-[2px] py-1 cursor-pointer transition-all duration-200 ${
-                checked ? 'border-red' : 'border-neutral-50'
+              className={`flex flex-col leading-none rounded-sm px-6 py-4 border-[2px] bg-[#F5F5F5] cursor-pointer transition-all duration-200 ${
+                checked ? 'border-black' : 'border-[#f5f5f5]'
               }`}
             >
               {value}
