@@ -3,7 +3,6 @@ import {
   MediaFile,
   useProductOptions,
   ProductPrice,
-  BuyNowButton,
   AddToCartButton,
 } from '@shopify/hydrogen';
 

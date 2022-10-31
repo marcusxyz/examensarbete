@@ -1,16 +1,20 @@
 import { Suspense } from 'react';
-import { gql, useShopQuery, CacheLong, Image } from '@shopify/hydrogen';
-import heroimg from '/Veneer002_Promo-02.jpg';
+import { gql, Image } from '@shopify/hydrogen';
 import { ButtonSmall } from '../elements/ButtonSmall';
+import { useContentfulQuery } from '../../api/useContentfulQuery';
 
 export default function Hero() {
-  const {
-    data: { shop },
-  } = useShopQuery({
-    query: SHOP_QUERY,
-    cache: CacheLong(),
-    preload: true,
+  const { data: contentfulData } = useContentfulQuery({
+    query: HERO_QUERY,
   });
+
+  console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
+  console.dir(contentfulData, { depth: 5 });
+  console.log(contentfulData.headerCollection.items[0].image.url);
+
+  const heroTitle = contentfulData.headerCollection.items[0].text;
+  const heroImg = contentfulData.headerCollection.items[0].image.url;
+
   return (
     <>
       <Suspense>
@@ -20,15 +24,13 @@ export default function Hero() {
             width={'100%'}
             height={'100%'}
             alt={`Image of brown kitchen`}
-            src={heroimg}
+            src={heroImg}
             loading='lazy'
           />
 
           <div className='flex flex-col md:justify-between gap-4 px-2 lg:px-4 py-4 lg:py-6 border-b md:border-l md:border-b-0 border-black'>
             <div>
-              <h1 className='text-4xl lg:text-5xl xl:text-6xl'>
-                Achieve photorealism with high-resolution textures
-              </h1>
+              <h1 className='text-4xl lg:text-5xl xl:text-6xl'>{heroTitle}</h1>
               <p className='text-lg lg:w-[75%] mt-4'>
                 Let’s get close and personal. Our quality texture maps allow you
                 to capture stunning close-ups or epic wide-shots in your scenes.
@@ -46,11 +48,15 @@ export default function Hero() {
   );
 }
 
-const SHOP_QUERY = gql`
-  query ShopInfo {
-    shop {
-      name
-      description
+const HERO_QUERY = gql`
+  query GetHeroContent {
+    headerCollection {
+      items {
+        text
+        image {
+          url
+        }
+      }
     }
   }
 `;
