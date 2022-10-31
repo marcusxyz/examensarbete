@@ -6,7 +6,7 @@ export default function ProductCard({ product }) {
   // console.log(amount);
   const amount = price?.amount;
   const alternativeImage = product.variants.nodes[0];
-  console.log(alternativeImage);
+  // console.log(alternativeImage);
 
   return (
     <Link to={`products/${product.handle}`} className='group'>
