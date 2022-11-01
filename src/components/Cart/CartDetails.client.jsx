@@ -85,9 +85,14 @@ function OrderSummary() {
       <dl className=''>
         <div className='flex items-center justify-between pt-6 pb-8 px-[10px] md:px-11'>
           <dt className='font-medium text-xl uppercase'>Total</dt>
-          <dd className='pr-[10px] md:pr-0 font-medium text-xl'>
+          <dd className='pr-[10px] md:pr-0 font-medium text-xl flex flex-row'>
+            $
             {cost?.subtotalAmount?.amount ? (
-              <Money data={cost?.subtotalAmount} />
+              <Money
+                data={cost?.subtotalAmount}
+                withoutCurrency
+                withoutTrailingZeros
+              />
             ) : (
               '$0'
             )}
@@ -125,9 +130,16 @@ export function CartLineItem() {
             </h3>
             <span>
               {productPrice === '0.0' ? (
-                <div>FREE</div>
+                <span>FREE</span>
               ) : (
-                <CartLinePrice as='span' />
+                <span>
+                  $
+                  <CartLinePrice
+                    withoutTrailingZeros
+                    withoutCurrency
+                    as='span'
+                  />
+                </span>
               )}
             </span>
           </div>
