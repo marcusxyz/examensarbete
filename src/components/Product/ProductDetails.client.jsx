@@ -75,18 +75,6 @@ function ProductForm({ product }) {
           })}
         </div>
       }
-      {/* <div>
-        {productPrice === '0.0' ? (
-          <div className='font-semibold'>FREE</div>
-        ) : (
-          <ProductPrice
-            className='text-gray-900 text-lg font-semibold'
-            variantId={selectedVariant.id}
-            data={product}
-            valueType='min'
-          />
-        )}
-      </div> */}
       <div className='grid items-stretch gap-4'>
         <PurchaseButton />
       </div>
@@ -96,11 +84,16 @@ function ProductForm({ product }) {
 
 function PriceVariants() {
   const { selectedVariant } = useProductOptions();
+  const amount = selectedVariant.priceV2.amount;
 
   return (
-    <h2 className='mt-4 font-medium text-2xl'>
-      ${Math.trunc(selectedVariant.priceV2.amount)}
-    </h2>
+    <>
+      {amount == '0.0' ? (
+        <h2 className='mt-4 font-medium text-2xl'>Free</h2>
+      ) : (
+        <h2 className='mt-4 font-medium text-2xl'>${Math.trunc(amount)}</h2>
+      )}
+    </>
   );
 }
 
