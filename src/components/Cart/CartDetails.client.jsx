@@ -16,7 +16,7 @@ export function CartDetails({ onClose }) {
   }
 
   return (
-    <div className='h-[90vh] overflow-y-auto'>
+    <div className='h-[100vh] overflow-y-auto md:border-l border-black'>
       <form className='grid grid-cols-1 grid-rows-[1fr_auto] w-auto divide-y divide-black'>
         <section aria-labelledby='cart-contents' className='transition'>
           <ul className='grid divide-y divide-black'>
@@ -41,7 +41,7 @@ export function CartDetails({ onClose }) {
 // Content and styling for empty cart
 export function CartEmpty({ onClose }) {
   return (
-    <div className='h-screen divide-y divide-black'>
+    <div className='h-screen divide-y divide-black md:border-l border-black'>
       <div className='flex flex-col space-y-7 pt-6 pb-16 px-[10px] md:px-11'>
         <p className='whitespace-prewrap max-w-prose font-medium text-copy'>
           Your shopping cart is empty
