@@ -42,9 +42,9 @@ export default function Header({ shop }) {
             onClick={openDrawer}
             className='relative flex items-center justify-center w-16 h-16'
           >
-            <div className='flex items-center justify-center gap-2'>
+            <div className='flex items-center justify-center gap-1'>
               <span className='font-medium'>Cart</span>
-              <IconBag />
+              {/* <IconBag /> */}
               <CartBadge />
             </div>
           </button>
@@ -75,11 +75,15 @@ function CartBadge() {
   const { totalQuantity } = useCart();
 
   if (totalQuantity < 1) {
-    return null;
+    return (
+      <div className='text-black bg-white font-medium'>
+        <span>(0)</span>
+      </div>
+    );
   }
   return (
-    <div className='text-black bg-white absolute bottom-1 right-1 text-[0.625rem] font-medium subpixel-antialiased h-3 min-w[0.75rem] flex items-center justify-center leading-none text-center w-auto px-[0.125rem] pb-px'>
-      <span>{totalQuantity}</span>
+    <div className='text-black bg-white font-medium'>
+      <span>({totalQuantity})</span>
     </div>
   );
 }
