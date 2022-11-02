@@ -20,5 +20,6 @@ export const useContentfulQuery = ({ query, variables, key = [] }) => {
     return response.json();
   });
 
+  // console.log(data);
   return data;
 };

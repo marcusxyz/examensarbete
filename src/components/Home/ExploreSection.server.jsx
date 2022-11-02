@@ -1,12 +1,9 @@
-import { Link, Image, gql, useShopQuery, CacheLong } from '@shopify/hydrogen';
+import { Link, Image } from '@shopify/hydrogen';
 import bathimg from '/bathroom.png';
 import kitchimg from '/kitchen.png';
 import { ButtonSmall } from '../elements/ButtonSmall';
 
-export default function ExploreSection() {
-  // console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
-  // console.log(collections.nodes[0]);
-
+export default function ExploreSection({ sectionTitle }) {
   return (
     <section className='w-full py-8 lg:py-4 border-t border-b border-black'>
       <div className='pb-8 lg:pb-4 px-2 grid grid-cols-1 lg:grid-cols-2'>
@@ -22,7 +19,7 @@ export default function ExploreSection() {
         </div>
         <div className='lg:order-first lg:relative'>
           <h3 className='mt-4 lg:mt-0 text-2xl lg:text-3xl xl:text-5xl lg:mb-4'>
-            Community renders
+            {sectionTitle}
           </h3>
           <p className='mb-8 lg:text-lg xl:text-2xl'>
             Realistic renders featuring our textures
