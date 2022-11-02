@@ -1,4 +1,4 @@
-import { Link, Image, gql, useShopQuery, CacheLong } from '@shopify/hydrogen';
+import { Link, Image } from '@shopify/hydrogen';
 import bathimg from '/bathroom.png';
 import kitchimg from '/kitchen.png';
 import { ButtonSmall } from '../elements/ButtonSmall';
@@ -34,7 +34,9 @@ export default function ExploreSection() {
         </div>
         <div className='lg:order-first lg:relative'>
           <h3 className='mt-4 lg:mt-0 text-2xl lg:text-3xl xl:text-5xl lg:mb-4'>
+
             {exploreTitle1}
+
           </h3>
           <p className='mb-8 lg:text-lg xl:text-2xl'>
             {exploreSubtitle1}
