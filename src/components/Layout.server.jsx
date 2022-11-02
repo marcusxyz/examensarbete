@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { useShopQuery, CacheLong, gql, Seo } from '@shopify/hydrogen';
 import { useContentfulQuery } from '../api/useContentfulQuery';
-import { GET_CONTENTFUL_QUERY } from '../api/query/heroQuery';
+import { GET_CONTENTFUL_QUERY } from '../api/query/query';
 
 /* Component imports */
 import Header from './Header.client';

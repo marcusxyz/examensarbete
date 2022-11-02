@@ -27,6 +27,18 @@ export const GET_CONTENTFUL_QUERY = gql`
         }
       }
     }
+    inspirationSection2Collection {
+      items {
+        title
+        subtitle
+        buttonText
+        buttonLink
+        paragraph
+        image {
+          url
+        }
+      }
+    }
     navigationCollection {
       items {
         linkText
