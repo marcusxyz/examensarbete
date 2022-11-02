@@ -3,7 +3,7 @@ import bathimg from '/bathroom.png';
 import kitchimg from '/kitchen.png';
 import { ButtonSmall } from '../elements/ButtonSmall';
 import { useContentfulQuery } from '../../api/useContentfulQuery';
-import { GET_CONTENTFUL_QUERY } from '../../api/query/heroQuery';
+import { GET_CONTENTFUL_QUERY } from '../../api/query/query';
 
 export default function ExploreSection() {
 
@@ -15,9 +15,20 @@ export default function ExploreSection() {
   // console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
   // console.log(contentfulData.inspirationSection1Collection.items[0].title);
 
-  const exploreTitle1 = contentfulData.inspirationSection1Collection.items[0].title;
-  const exploreSubtitle1 = contentfulData.inspirationSection1Collection.items[0].subtitle;
-  const explorebtnText1 = contentfulData.inspirationSection1Collection.items[0].buttonText;
+  const firstTitle = contentfulData.inspirationSection1Collection.items[0].title;
+  const firstSubtitle = contentfulData.inspirationSection1Collection.items[0].subtitle;
+  const firstBtnText = contentfulData.inspirationSection1Collection.items[0].buttonText;
+  const firstImg = contentfulData.inspirationSection1Collection.items[0].image.url;
+  const imageTextureName = contentfulData.inspirationSection1Collection.items[0].imageTextureName;
+  const imageTextureLink = contentfulData.inspirationSection1Collection.items[0].imageTextureLink;
+  const imageTakenFrom = contentfulData.inspirationSection1Collection.items[0].imageTakenFrom;
+
+  const secondTitle = contentfulData.inspirationSection2Collection.items[0].title;
+  const secondSubtitle = contentfulData.inspirationSection2Collection.items[0].subtitle;
+  const secondImg = contentfulData.inspirationSection2Collection.items[0].image.url;
+  const secondBtnText = contentfulData.inspirationSection2Collection.items[0].buttonText;
+  const secondBtnLink = contentfulData.inspirationSection2Collection.items[0].buttonLink;
+  const paragraph = contentfulData.inspirationSection2Collection.items[0].paragraph;
 
   return (
     <section className='w-full py-8 lg:py-4 border-t border-b border-black'>
@@ -28,26 +39,24 @@ export default function ExploreSection() {
             width={'100%'}
             height={'100%'}
             alt={`Image of bathtub with big glas windows behind`}
-            src={bathimg}
+            src={firstImg}
             loading='lazy'
           />
         </div>
         <div className='lg:order-first lg:relative'>
           <h3 className='mt-4 lg:mt-0 text-2xl lg:text-3xl xl:text-5xl lg:mb-4'>
-
-            {exploreTitle1}
-
+            {firstTitle}
           </h3>
           <p className='mb-8 lg:text-lg xl:text-2xl'>
-            {exploreSubtitle1}
+            {firstSubtitle}
           </p>
 
-          <ButtonSmall to='' btnName={explorebtnText1} />
+          <ButtonSmall to='' btnName={firstBtnText} />
 
           <div className='hidden lg:absolute bottom-0 right-4 lg:flex flex-col items-end'>
-            <h4 className='font-medium xl:text-2xl'>Bloorise Visuals</h4>
-            <Link to='https://www.bloorise.com/'>bloorise.com</Link>
-            <p>Using: Concrete 001</p>
+            <h4 className='font-medium xl:text-2xl'>{imageTakenFrom}</h4>
+            <Link to='https://www.bloorise.com/'>{imageTextureLink}</Link>
+            <p>Using: {imageTextureName}</p>
           </div>
         </div>
       </div>
@@ -65,24 +74,20 @@ export default function ExploreSection() {
         <div className='px-2 lg:flex items-start justify-between lg:mt-4 '>
           <div>
             <h3 className='mt-4 lg:mt-0 text-2xl lg:text-3xl xl:text-5xl'>
-              Textures that are sensational
+              {secondTitle}
             </h3>
             <p className='mb-8 lg:mb-0 lg:text-lg xl:text-2xl xl:mt-2'>
-              We all believe what our eyes tell us.
+              {secondSubtitle}
             </p>
           </div>
 
-          <ButtonSmall to='' btnName='Our texture scanning process' />
+          <ButtonSmall to={secondBtnLink} btnName={secondBtnText} />
         </div>
       </div>
 
       <div className='mt-8 lg:mt-4 px-2 pt-8 lg:py-4 border-t border-black'>
         <p className='lg:max-w-[70%] xl:max-w-[50%]'>
-          By using a unique setup for texture scanning, we can capture the
-          height and depth of the surface and the very essence of the material.
-          It provides the high-resolution we need to meticulously retouch and
-          tile our textures for both ease of use and high-quality visuals. This
-          is what we mean by textures you can feel.{' '}
+          {paragraph}
         </p>
       </div>
     </section>
