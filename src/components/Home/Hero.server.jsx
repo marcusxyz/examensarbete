@@ -5,9 +5,8 @@ import { useContentfulQuery } from '../../api/useContentfulQuery';
 import { GET_CONTENTFUL_QUERY } from '../../api/query/heroQuery';
 
 export default function Hero() {
-
   const { data: contentfulData } = useContentfulQuery({
-    query: GET_CONTENTFUL_QUERY
+    query: GET_CONTENTFUL_QUERY,
   });
 
   console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
@@ -29,20 +28,18 @@ export default function Hero() {
             width={'100%'}
             height={'100%'}
             alt={`Image of brown kitchen`}
-            src={heroImage}
+            src={heroImg}
             loading='lazy'
           />
 
           <div className='flex flex-col md:justify-between gap-4 px-2 lg:px-4 py-4 lg:py-6 border-b md:border-l md:border-b-0 border-black'>
             <div>
-              <h1 className='text-4xl lg:text-5xl xl:text-6xl'>
-                {sectionTitle}
-              </h1>
-              <p className='text-lg lg:w-[75%] mt-4'>{paragraph}</p>
+              <h1 className='text-4xl lg:text-5xl xl:text-6xl'>{heroTitle}</h1>
+              <p className='text-lg lg:w-[75%] mt-4'>{heroParagraph}</p>
             </div>
 
             <div className='my-4'>
-              <ButtonSmall to='/textures' btnName='Read more' />
+              <ButtonSmall to={heroLink} btnName={heroText} />
             </div>
           </div>
         </section>
@@ -50,4 +47,3 @@ export default function Hero() {
     </>
   );
 }
-
