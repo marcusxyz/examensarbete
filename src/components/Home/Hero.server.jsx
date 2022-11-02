@@ -2,15 +2,17 @@ import { Suspense } from 'react';
 import { gql, Image } from '@shopify/hydrogen';
 import { ButtonSmall } from '../elements/ButtonSmall';
 import { useContentfulQuery } from '../../api/useContentfulQuery';
+import { GET_CONTENTFUL_QUERY } from '../../api/query/heroQuery';
 
 export default function Hero() {
+
   const { data: contentfulData } = useContentfulQuery({
-    query: HERO_QUERY,
+    query: GET_CONTENTFUL_QUERY
   });
 
   console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
-  console.dir(contentfulData, { depth: 5 });
-  console.log(contentfulData.heroCollection.items[0].image.url);
+  // console.dir(contentfulData, { depth: 5 });
+  // console.log(contentfulData.heroCollection.items[0].image.url);
 
   const heroTitle = contentfulData.heroCollection.items[0].title;
   const heroParagraph = contentfulData.heroCollection.items[0].paragraph;
@@ -49,18 +51,3 @@ export default function Hero() {
   );
 }
 
-const HERO_QUERY = gql`
-  query GetHeroContent {
-    heroCollection {
-      items {
-        title,
-        paragraph,
-        buttonText,
-        buttonLink,
-        image {
-          url
-        }
-      }
-    }
-  }
-`;
