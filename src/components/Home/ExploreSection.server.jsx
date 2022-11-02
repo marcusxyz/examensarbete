@@ -2,8 +2,23 @@ import { Link, Image } from '@shopify/hydrogen';
 import bathimg from '/bathroom.png';
 import kitchimg from '/kitchen.png';
 import { ButtonSmall } from '../elements/ButtonSmall';
+import { useContentfulQuery } from '../../api/useContentfulQuery';
+import { GET_CONTENTFUL_QUERY } from '../../api/query/heroQuery';
 
-export default function ExploreSection({ sectionTitle }) {
+export default function ExploreSection() {
+
+  const { data: contentfulData } = useContentfulQuery({
+    query: GET_CONTENTFUL_QUERY
+  });
+
+  console.dir(contentfulData, { depth: 5 });
+  // console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
+  // console.log(contentfulData.inspirationSection1Collection.items[0].title);
+
+  const exploreTitle1 = contentfulData.inspirationSection1Collection.items[0].title;
+  const exploreSubtitle1 = contentfulData.inspirationSection1Collection.items[0].subtitle;
+  const explorebtnText1 = contentfulData.inspirationSection1Collection.items[0].buttonText;
+
   return (
     <section className='w-full py-8 lg:py-4 border-t border-b border-black'>
       <div className='pb-8 lg:pb-4 px-2 grid grid-cols-1 lg:grid-cols-2'>
@@ -19,13 +34,15 @@ export default function ExploreSection({ sectionTitle }) {
         </div>
         <div className='lg:order-first lg:relative'>
           <h3 className='mt-4 lg:mt-0 text-2xl lg:text-3xl xl:text-5xl lg:mb-4'>
-            {sectionTitle}
+
+            {exploreTitle1}
+
           </h3>
           <p className='mb-8 lg:text-lg xl:text-2xl'>
-            Realistic renders featuring our textures
+            {exploreSubtitle1}
           </p>
 
-          <ButtonSmall to='' btnName='Explore the gallery' />
+          <ButtonSmall to='' btnName={explorebtnText1} />
 
           <div className='hidden lg:absolute bottom-0 right-4 lg:flex flex-col items-end'>
             <h4 className='font-medium xl:text-2xl'>Bloorise Visuals</h4>
@@ -71,3 +88,4 @@ export default function ExploreSection({ sectionTitle }) {
     </section>
   );
 }
+

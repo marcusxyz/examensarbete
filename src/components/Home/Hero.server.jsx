@@ -1,10 +1,25 @@
 import { Suspense } from 'react';
 import { Image } from '@shopify/hydrogen';
 import { ButtonSmall } from '../elements/ButtonSmall';
+import { useContentfulQuery } from '../../api/useContentfulQuery';
+import { GET_CONTENTFUL_QUERY } from '../../api/query/heroQuery';
 
-import heroImage from '/hero-img.png';
+export default function Hero() {
 
-export default function Hero({ sectionTitle, paragraph }) {
+  const { data: contentfulData } = useContentfulQuery({
+    query: GET_CONTENTFUL_QUERY
+  });
+
+  console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
+  // console.dir(contentfulData, { depth: 5 });
+  // console.log(contentfulData.heroCollection.items[0].image.url);
+
+  const heroTitle = contentfulData.heroCollection.items[0].title;
+  const heroParagraph = contentfulData.heroCollection.items[0].paragraph;
+  const heroText = contentfulData.heroCollection.items[0].buttonText;
+  const heroLink = contentfulData.heroCollection.items[0].buttonLink;
+  const heroImg = contentfulData.heroCollection.items[0].image.url;
+
   return (
     <>
       <Suspense>
@@ -35,3 +50,4 @@ export default function Hero({ sectionTitle, paragraph }) {
     </>
   );
 }
+
