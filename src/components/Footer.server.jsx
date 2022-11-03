@@ -1,4 +1,6 @@
 import { Link, Image, gql, useShopQuery, CacheLong } from '@shopify/hydrogen';
+import { GET_CONTENTFUL_QUERY } from '../api/query/query';
+import { useContentfulQuery } from '../api/useContentfulQuery';
 import logo from '/logo.svg';
 
 export default function Footer() {
@@ -8,6 +10,20 @@ export default function Footer() {
     query: CATEGORY_QUERY,
     cache: CacheLong(),
   });
+
+  const { data: contentfulData } = useContentfulQuery({
+    query: GET_CONTENTFUL_QUERY
+  });
+
+  const socialName1 = contentfulData.footerCollection.items[0].socialName1;
+  const socialLink1 = contentfulData.footerCollection.items[0].socialLink1;
+  const socialName2 = contentfulData.footerCollection.items[0].socialName2;
+  const socialLink2 = contentfulData.footerCollection.items[0].socialLink2;
+  const socialName3 = contentfulData.footerCollection.items[0].socialName3;
+  const socialLink3 = contentfulData.footerCollection.items[0].socialLink3;
+  const getCustomerButtonName = contentfulData.footerCollection.items[0].getCustomerButtonName;
+  const getCustomerButtonLink = contentfulData.footerCollection.items[0].getCustomerButtonLink;
+  const copyrightText = contentfulData.footerCollection.items[0].copyright;
 
   const marqueeStyle = `
     font-medium block align-middle px-2 md:px-4 text-2xl md:text-4xl lg:text-7xl after:content-['/'] after:font-light after:inline-block after:md:h-[42px] after:lg:h-[78px] after:align-bottom after:pl-4 md:after:pl-8
@@ -54,43 +70,30 @@ export default function Footer() {
               );
             })}
           </div>
-
-          {/* <div className='absolute top-0 py-12 animate-marquee2 whitespace-nowrap'>
-            <span className={marqueeStyle}>Floor </span>
-            <span className={marqueeStyle}>Carpet </span>
-            <span className={marqueeStyle}>Wood </span>
-            <span className={marqueeStyle}>Fabric </span>
-            <span className={marqueeStyle}>Leather </span>
-            <span className={marqueeStyle}>Floor </span>
-            <span className={marqueeStyle}>Carpet </span>
-            <span className={marqueeStyle}>Wood </span>
-            <span className={marqueeStyle}>Fabric </span>
-            <span className={marqueeStyle}>Leather </span>
-          </div> */}
         </div>
 
         <div className='w-auto grid grid-col-1 gap-6 lg:gap-0 lg:grid-cols-3 justify-items-center md:justify-between py-8 px-[10px] md:px-6 border-t border-black'>
           <div className='w-auto flex gap-8 md:col-start-2'>
-            <Link to='' className='font-medium'>
-              Instagram
+            <Link to={socialLink1} className='font-medium' target="_blank">
+              {socialName1}
             </Link>
-            <Link to='' className='font-medium'>
-              Facebook
+            <Link to={socialLink2} className='font-medium' target="_blank">
+              {socialName2}
             </Link>
-            <Link to='' className='font-medium'>
-              LinkedIn
+            <Link to={socialLink3} className='font-medium' target="_blank">
+              {socialName3}
             </Link>
           </div>
 
           <Link
-            to=''
+            to={getCustomerButtonLink}
             className='w-full text-center md:text-right font-medium md:col-start-3'
           >
-            Become a patron
+            {getCustomerButtonName}
           </Link>
 
           <p className='w-full text-center md:text-left font-medium md:col-start-1 md:row-start-1'>
-            © 2022 Texture Supply
+            {copyrightText}
           </p>
         </div>
       </div>

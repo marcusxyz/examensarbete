@@ -13,6 +13,19 @@ query GetContentful {
       }
     }
   },
+  footerCollection {
+    items {
+      socialName1,
+      socialLink1,
+      socialName2,
+      socialLink2,
+      socialName3,
+      socialLink3,
+      getCustomerButtonName,
+      getCustomerButtonLink,
+      copyright
+    }
+  },
   inspirationSection1Collection {
     items {
       title,

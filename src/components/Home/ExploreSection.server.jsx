@@ -55,7 +55,7 @@ export default function ExploreSection() {
 
           <div className='hidden lg:absolute bottom-0 right-4 lg:flex flex-col items-end'>
             <h4 className='font-medium xl:text-2xl'>{imageTakenFrom}</h4>
-            <Link to='https://www.bloorise.com/'>{imageTextureLink}</Link>
+            <Link to={imageTextureLink} target="_blank">{imageTextureLink}</Link>
             <p>Using: {imageTextureName}</p>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function ExploreSection() {
           width={'100%'}
           height={'100%'}
           alt={`Image of light brown kitchen`}
-          src={kitchimg}
+          src={secondImg}
           loading='lazy'
         />
 
