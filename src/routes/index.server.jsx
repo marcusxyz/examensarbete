@@ -1,6 +1,5 @@
 import { Suspense } from 'react';
 import { useShopQuery, CacheLong, gql, Seo } from '@shopify/hydrogen';
-import { useContentfulQuery } from '../api/useContentfulQuery';
 
 // Components
 import { Layout } from '../components/Layout.server';
@@ -34,6 +33,7 @@ export default function Home() {
     cache: CacheLong(),
     preload: true,
   });
+
   return (
     <Layout>
       <Suspense>
@@ -55,35 +55,5 @@ const SEO_QUERY = gql`
       name
       description
     }
-  }
-`;
-
-const HOMEPAGE_QUERY = gql`
-  query GetHomePageContent {
-    hero(id: "Pc3BhSyg4U69g0xxfvYBb") {
-      title
-      paragraph
-      buttonText
-      buttonLink
-      image {
-        url
-      }
-    }
-    inspirationSection1(id: "2khCWARN7L6IiNvhWUmqVq") {
-      title
-      subtitle
-      buttonText
-      buttonLink
-      imageTextureName
-      imageTextureLink
-      imageTakenFrom
-      image {
-        url
-      }
-    }
-    # navigation(id: "48skrxEMPcmg6HHkpuJ8CZ") {
-    #   linkText
-    #   linkUrl
-    # }
   }
 `;

@@ -1,5 +1,7 @@
 import { Suspense } from 'react';
 import { useShopQuery, CacheLong, gql, Seo } from '@shopify/hydrogen';
+import { useContentfulQuery } from '../api/useContentfulQuery';
+import { GET_CONTENTFUL_QUERY } from '../api/query/query';
 
 /* Component imports */
 import Header from './Header.client';
@@ -15,6 +17,15 @@ export function Layout({ children }) {
     query: SHOP_QUERY,
     cache: CacheLong(),
   });
+
+  const { data: contentfulData } = useContentfulQuery({
+    query: GET_CONTENTFUL_QUERY,
+  });
+
+  const linkText1 = contentfulData.navigationCollection.items[1].linkText;
+  const linkURL1 = contentfulData.navigationCollection.items[1].linkUrl;
+  const linkText2 = contentfulData.navigationCollection.items[0].linkText;
+  const linkURL2 = contentfulData.navigationCollection.items[0].linkUrl;
 
   return (
     <>
@@ -33,7 +44,13 @@ export function Layout({ children }) {
             Skip to content
           </a>
         </div>
-        <Header shop={shop} />
+        <Header
+          shop={shop}
+          navItemLink1={linkURL1}
+          navItemText1={linkText1}
+          navItemLink2={linkURL2}
+          navItemText2={linkText2}
+        />
 
         <main role='main' id='mainContent' className='flex-grow'>
           <Suspense fallback={null}>{children}</Suspense>

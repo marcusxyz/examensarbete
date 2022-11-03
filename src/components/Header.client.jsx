@@ -1,10 +1,16 @@
-import { useUrl, Link, useCart, fetchSync, gql } from '@shopify/hydrogen';
+import { useUrl, Link, useCart } from '@shopify/hydrogen';
 
 // import components
 import { Drawer, useDrawer } from './Cart/Drawer.client';
 import { CartDetails } from './Cart/CartDetails.client';
 
-export default function Header({ shop }) {
+export default function Header({
+  shop,
+  navItemText1,
+  navItemLink1,
+  navItemText2,
+  navItemLink2,
+}) {
   const { isOpen, openDrawer, closeDrawer } = useDrawer();
 
   return (
@@ -29,11 +35,11 @@ export default function Header({ shop }) {
           </div>
 
           <div className='flex gap-8'>
-            <Link className='font-medium' to='/textures'>
-              Textures
+            <Link className='font-medium' to={navItemLink1}>
+              {navItemText1}
             </Link>
-            <Link className='font-medium' to='/'>
-              Gallery
+            <Link className='font-medium' to={navItemLink2}>
+              {navItemText2}
             </Link>
             <Link className='font-medium' to='/'>
               About
