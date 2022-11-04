@@ -10,6 +10,8 @@ export default function Header({
   navItemLink1,
   navItemText2,
   navItemLink2,
+  navItemText3,
+  navItemLink3,
 }) {
   const { isOpen, openDrawer, closeDrawer } = useDrawer();
 
@@ -41,8 +43,8 @@ export default function Header({
             <Link className='font-medium' to={navItemLink2}>
               {navItemText2}
             </Link>
-            <Link className='font-medium' to='/'>
-              About
+            <Link className='font-medium' to={navItemLink3}>
+              {navItemText3}
             </Link>
           </div>
           <button
