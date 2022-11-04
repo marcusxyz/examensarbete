@@ -22,6 +22,7 @@ export function Layout({ children }) {
     query: GET_CONTENTFUL_QUERY,
   });
 
+
   const linkText1 = contentfulData.navigationCollection.items[0].linkText;
   const linkURL1 = contentfulData.navigationCollection.items[0].linkUrl;
   const linkText2 = contentfulData.navigationCollection.items[1].linkText;
@@ -54,6 +55,7 @@ export function Layout({ children }) {
           navItemText2={linkText2}
           navItemText3={linkText3}
           navItemLink3={linkURL3}
+
         />
 
         <main role='main' id='mainContent' className='flex-grow'>

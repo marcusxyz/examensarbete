@@ -43,6 +43,7 @@ export default function Header({
             <Link className='font-medium' to={navItemLink2}>
               {navItemText2}
             </Link>
+
             <Link className='font-medium' to={navItemLink1}>
               {navItemText1}
             </Link>
