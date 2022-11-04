@@ -22,10 +22,12 @@ export function Layout({ children }) {
     query: GET_CONTENTFUL_QUERY,
   });
 
-  const linkText1 = contentfulData.navigationCollection.items[1].linkText;
-  const linkURL1 = contentfulData.navigationCollection.items[1].linkUrl;
-  const linkText2 = contentfulData.navigationCollection.items[0].linkText;
-  const linkURL2 = contentfulData.navigationCollection.items[0].linkUrl;
+  const linkText1 = contentfulData.navigationCollection.items[0].linkText;
+  const linkURL1 = contentfulData.navigationCollection.items[0].linkUrl;
+  const linkText2 = contentfulData.navigationCollection.items[1].linkText;
+  const linkURL2 = contentfulData.navigationCollection.items[1].linkUrl;
+  const linkText3 = contentfulData.navigationCollection.items[2].linkText;
+  const linkURL3 = contentfulData.navigationCollection.items[2].linkUrl;
 
   return (
     <>
@@ -50,6 +52,8 @@ export function Layout({ children }) {
           navItemText1={linkText1}
           navItemLink2={linkURL2}
           navItemText2={linkText2}
+          navItemText3={linkText3}
+          navItemLink3={linkURL3}
         />
 
         <main role='main' id='mainContent' className='flex-grow'>

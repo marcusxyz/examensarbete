@@ -10,6 +10,8 @@ export default function Header({
   navItemLink1,
   navItemText2,
   navItemLink2,
+  navItemText3,
+  navItemLink3
 }) {
   const { isOpen, openDrawer, closeDrawer } = useDrawer();
 
@@ -35,14 +37,14 @@ export default function Header({
           </div>
 
           <div className='flex gap-8'>
-            <Link className='font-medium' to={navItemLink1}>
-              {navItemText1}
+            <Link className='font-medium' to={navItemLink3}>
+              {navItemText3}
             </Link>
             <Link className='font-medium' to={navItemLink2}>
               {navItemText2}
             </Link>
-            <Link className='font-medium' to='/'>
-              About
+            <Link className='font-medium' to={navItemLink1}>
+              {navItemText1}
             </Link>
           </div>
           <button

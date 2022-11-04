@@ -52,11 +52,21 @@ inspirationSection1Collection {
       }
     }
   },
- navigationCollection {
+  navigationCollection(order: sys_firstPublishedAt_ASC) {
     items {
       linkText
       linkUrl
     }
-  }
+  },
+   about (id: "3nEO1ZTk7pI0AV8GDanIny") {
+      title,
+      introText,
+      image {
+        url
+      },
+      paragraph {
+        json
+      }
+},
 }
 `;
