@@ -31,7 +31,7 @@ export default function ExploreSection() {
   const paragraph = contentfulData.inspirationSection2Collection.items[0].paragraph;
 
   return (
-    <section className='w-full py-8 lg:py-4 border-t border-b border-black'>
+    <section className='w-full py-8 lg:py-4 border-t border-black'>
       <div className='pb-8 lg:pb-4 px-2 grid grid-cols-1 lg:grid-cols-2'>
         <div className='lg:order-last'>
           <Image
