@@ -6,29 +6,41 @@ import { useContentfulQuery } from '../../api/useContentfulQuery';
 import { GET_CONTENTFUL_QUERY } from '../../api/query/query';
 
 export default function ExploreSection() {
-
   const { data: contentfulData } = useContentfulQuery({
-    query: GET_CONTENTFUL_QUERY
+    query: GET_CONTENTFUL_QUERY,
   });
 
-  console.dir(contentfulData, { depth: 5 });
+  // console.dir(contentfulData, { depth: 5 });
   // console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
   // console.log(contentfulData.inspirationSection1Collection.items[0].title);
 
-  const firstTitle = contentfulData.inspirationSection1Collection.items[0].title;
-  const firstSubtitle = contentfulData.inspirationSection1Collection.items[0].subtitle;
-  const firstBtnText = contentfulData.inspirationSection1Collection.items[0].buttonText;
-  const firstImg = contentfulData.inspirationSection1Collection.items[0].image.url;
-  const imageTextureName = contentfulData.inspirationSection1Collection.items[0].imageTextureName;
-  const imageTextureLink = contentfulData.inspirationSection1Collection.items[0].imageTextureLink;
-  const imageTakenFrom = contentfulData.inspirationSection1Collection.items[0].imageTakenFrom;
+  const firstTitle =
+    contentfulData.inspirationSection1Collection.items[0].title;
+  const firstSubtitle =
+    contentfulData.inspirationSection1Collection.items[0].subtitle;
+  const firstBtnText =
+    contentfulData.inspirationSection1Collection.items[0].buttonText;
+  const firstImg =
+    contentfulData.inspirationSection1Collection.items[0].image.url;
+  const imageTextureName =
+    contentfulData.inspirationSection1Collection.items[0].imageTextureName;
+  const imageTextureLink =
+    contentfulData.inspirationSection1Collection.items[0].imageTextureLink;
+  const imageTakenFrom =
+    contentfulData.inspirationSection1Collection.items[0].imageTakenFrom;
 
-  const secondTitle = contentfulData.inspirationSection2Collection.items[0].title;
-  const secondSubtitle = contentfulData.inspirationSection2Collection.items[0].subtitle;
-  const secondImg = contentfulData.inspirationSection2Collection.items[0].image.url;
-  const secondBtnText = contentfulData.inspirationSection2Collection.items[0].buttonText;
-  const secondBtnLink = contentfulData.inspirationSection2Collection.items[0].buttonLink;
-  const paragraph = contentfulData.inspirationSection2Collection.items[0].paragraph;
+  const secondTitle =
+    contentfulData.inspirationSection2Collection.items[0].title;
+  const secondSubtitle =
+    contentfulData.inspirationSection2Collection.items[0].subtitle;
+  const secondImg =
+    contentfulData.inspirationSection2Collection.items[0].image.url;
+  const secondBtnText =
+    contentfulData.inspirationSection2Collection.items[0].buttonText;
+  const secondBtnLink =
+    contentfulData.inspirationSection2Collection.items[0].buttonLink;
+  const paragraph =
+    contentfulData.inspirationSection2Collection.items[0].paragraph;
 
   return (
     <section className='w-full py-8 lg:py-4 border-t border-black'>
@@ -47,15 +59,15 @@ export default function ExploreSection() {
           <h3 className='mt-4 lg:mt-0 text-2xl lg:text-3xl xl:text-5xl lg:mb-4'>
             {firstTitle}
           </h3>
-          <p className='mb-8 lg:text-lg xl:text-2xl'>
-            {firstSubtitle}
-          </p>
+          <p className='mb-8 lg:text-lg xl:text-2xl'>{firstSubtitle}</p>
 
           <ButtonSmall to='' btnName={firstBtnText} />
 
           <div className='hidden lg:absolute bottom-0 right-4 lg:flex flex-col items-end'>
             <h4 className='font-medium xl:text-2xl'>{imageTakenFrom}</h4>
-            <Link to={imageTextureLink} target="_blank">{imageTextureLink}</Link>
+            <Link to={imageTextureLink} target='_blank'>
+              {imageTextureLink}
+            </Link>
             <p>Using: {imageTextureName}</p>
           </div>
         </div>
@@ -86,11 +98,8 @@ export default function ExploreSection() {
       </div>
 
       <div className='mt-8 lg:mt-4 px-2 pt-8 lg:py-4 border-t border-black'>
-        <p className='lg:max-w-[70%] xl:max-w-[50%]'>
-          {paragraph}
-        </p>
+        <p className='lg:max-w-[70%] xl:max-w-[50%]'>{paragraph}</p>
       </div>
     </section>
   );
 }
-
