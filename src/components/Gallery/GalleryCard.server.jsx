@@ -2,13 +2,9 @@ import { gql, Image, Link, useShopQuery } from '@shopify/hydrogen';
 
 
 
-export default function GalleryCard({ src, alt, name, url, fabric, className }) {
-
-    console.log("Hejsan");
-
-
+export default function GalleryCard({ src, alt, name, url, fabric }) {
     return (
-        <div className={className}>
+        <div>
             <Image
                 className='overflow-clip inline-block object-cover h-[280px] lg:h-[90%]'
                 width={'100%'}
@@ -19,12 +15,12 @@ export default function GalleryCard({ src, alt, name, url, fabric, className }) 
             />
             <div className='flex justify-between gap-3 h-[10%]'>
                 <div className='mt-2'>
-                    <h2 className='lg:text-sm lg:font-medium'>Jonathan Nicholson</h2>
-                    <Link to='hej.se' className='text-sm'>nicholsonvisualization.com</Link>
+                    <h2 className='lg:text-sm lg:font-medium'>{name}</h2>
+                    <Link to='hej.se' className='text-sm'>{url}</Link>
                 </div>
 
                 <div className='mt-2.5'>
-                    <p className='text-sm'>Using: Fabric 003, Floor 001</p>
+                    <p className='text-sm'>Using: {fabric}</p>
                 </div>
             </div>
         </div>
