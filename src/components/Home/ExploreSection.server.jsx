@@ -17,9 +17,9 @@ export default function ExploreSection() {
   return (
     <>
       <Suspense>
-        <section className='w-full py-8 lg:py-4 border-t border-black'>
+        <section className='w-full border-t border-black'>
           {communityRenders.map((item) => (
-            <div className='pb-8 lg:pb-4 px-2 grid grid-cols-1 lg:grid-cols-2'>
+            <div className='px-[10px] md:px-6 py-8 grid grid-cols-1 lg:grid-cols-2'>
               <div className='lg:order-last'>
                 <Image
                   className='overflow-clip inline-block object-cover h-[375px] xl:h-[700px]'
@@ -31,7 +31,7 @@ export default function ExploreSection() {
                 />
               </div>
               <div className='lg:order-first lg:relative'>
-                <h3 className='mt-4 lg:mt-0 text-2xl lg:text-3xl xl:text-5xl lg:mb-4'>
+                <h3 className='pt-2 md:pt-0 text-2xl lg:text-3xl xl:text-5xl lg:mb-4'>
                   {item.title}
                 </h3>
                 <p className='mb-8 lg:text-lg xl:text-2xl'>{item.subtitle}</p>
@@ -52,7 +52,7 @@ export default function ExploreSection() {
           ))}
           {aboutSection.map((item) => (
             <>
-              <div className='pt-8 lg:pt-4 border-t border-black'>
+              <div className='pt-8 border-t border-black'>
                 <Image
                   className='overflow-clip inline-block object-cover h-[375px] lg:h-[500px] xl:h-[800px]'
                   width={'100%'}
@@ -62,7 +62,7 @@ export default function ExploreSection() {
                   loading='lazy'
                 />
 
-                <div className='px-2 lg:flex items-start justify-between lg:mt-4 '>
+                <div className='px-[10px] md:px-6 lg:flex items-start justify-between lg:mt-4 '>
                   <div>
                     <h3 className='mt-4 lg:mt-0 text-2xl lg:text-3xl xl:text-5xl'>
                       {item.title}
@@ -75,7 +75,7 @@ export default function ExploreSection() {
                   <ButtonSmall to={item.buttonLink} btnName={item.buttonText} />
                 </div>
               </div>
-              <div className='mt-8 lg:mt-4 px-2 pt-8 lg:py-4 border-t border-black'>
+              <div className='mt-8 lg:mt-4 px-[10px] md:px-6 pt-4 pb-8 md:pb-6 border-t border-black'>
                 <p className='lg:max-w-[70%] xl:max-w-[50%]'>
                   {item.paragraph}
                 </p>
