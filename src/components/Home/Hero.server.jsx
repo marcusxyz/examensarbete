@@ -14,6 +14,8 @@ export default function Hero() {
 
   const hero = contentfulData.heroCollection.items;
 
+  console.log(hero);
+
   // {
   //   Array.isArray(hero) ? hero.map((item) => console.log(item)) : null;
   // }
@@ -28,7 +30,7 @@ export default function Hero() {
               width={'100%'}
               height={'100%'}
               alt={`Image of brown kitchen`}
-              src={item.image.url}
+              src={item.media.url}
               loading='lazy'
             />
             <div className='flex flex-col md:justify-between gap-4 px-2 lg:px-4 py-4 lg:py-6 border-b md:border-l md:border-b-0 border-black'>

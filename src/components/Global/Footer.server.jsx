@@ -105,7 +105,7 @@ export default function Footer() {
 
 const CATEGORY_QUERY = gql`
   query Collections {
-    collections(first: 8, sortKey: UPDATED_AT) {
+    collections(first: 8, sortKey: RELEVANCE) {
       nodes {
         id
         title
