@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { useShopQuery, CacheLong, gql, Seo } from '@shopify/hydrogen';
 
 // Components
-import { Layout } from '../components/Layout.server';
+import { Layout } from '../components/Global/Layout.server';
 import Hero from '../components/Home/Hero.server';
 import Bestsellers from '../components/Home/Bestsellers.server';
 import PopularCollections from '../components/Home/PopularCollections.server';

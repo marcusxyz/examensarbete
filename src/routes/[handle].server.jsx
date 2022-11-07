@@ -9,7 +9,7 @@ import {
 } from '@shopify/hydrogen';
 
 // Import components
-import { Layout } from '../components/Layout.server';
+import { Layout } from '../components/Global/Layout.server';
 import ProductCard from '../components/Product/ProductCard.server';
 
 // Product list page i.e '/textures'

@@ -1,6 +1,6 @@
 import { Link, Image, gql, useShopQuery, CacheLong } from '@shopify/hydrogen';
-import { GET_CONTENTFUL_QUERY } from '../api/query/query';
-import { useContentfulQuery } from '../api/useContentfulQuery';
+import { GET_CONTENTFUL_QUERY } from '../../api/query/query';
+import { useContentfulQuery } from '../../api/useContentfulQuery';
 import logo from '/logo.svg';
 
 export default function Footer() {
@@ -12,7 +12,7 @@ export default function Footer() {
   });
 
   const { data: contentfulData } = useContentfulQuery({
-    query: GET_CONTENTFUL_QUERY
+    query: GET_CONTENTFUL_QUERY,
   });
 
   const socialName1 = contentfulData.footerCollection.items[0].socialName1;
@@ -21,8 +21,10 @@ export default function Footer() {
   const socialLink2 = contentfulData.footerCollection.items[0].socialLink2;
   const socialName3 = contentfulData.footerCollection.items[0].socialName3;
   const socialLink3 = contentfulData.footerCollection.items[0].socialLink3;
-  const getCustomerButtonName = contentfulData.footerCollection.items[0].getCustomerButtonName;
-  const getCustomerButtonLink = contentfulData.footerCollection.items[0].getCustomerButtonLink;
+  const getCustomerButtonName =
+    contentfulData.footerCollection.items[0].getCustomerButtonName;
+  const getCustomerButtonLink =
+    contentfulData.footerCollection.items[0].getCustomerButtonLink;
   const copyrightText = contentfulData.footerCollection.items[0].copyright;
 
   const marqueeStyle = `
@@ -74,13 +76,13 @@ export default function Footer() {
 
         <div className='w-auto grid grid-col-1 gap-6 lg:gap-0 lg:grid-cols-3 justify-items-center md:justify-between py-8 px-[10px] md:px-6 border-t border-black'>
           <div className='w-auto flex gap-8 md:col-start-2'>
-            <Link to={socialLink1} className='font-medium' target="_blank">
+            <Link to={socialLink1} className='font-medium' target='_blank'>
               {socialName1}
             </Link>
-            <Link to={socialLink2} className='font-medium' target="_blank">
+            <Link to={socialLink2} className='font-medium' target='_blank'>
               {socialName2}
             </Link>
-            <Link to={socialLink3} className='font-medium' target="_blank">
+            <Link to={socialLink3} className='font-medium' target='_blank'>
               {socialName3}
             </Link>
           </div>

@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { useShopQuery, CacheLong, gql, Seo } from '@shopify/hydrogen';
 
 // Components
-import { Layout } from '../components/Layout.server';
+import { Layout } from '../components/Global/Layout.server';
 
 export default function Gallery() {
   //   const {

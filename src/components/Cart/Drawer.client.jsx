@@ -7,9 +7,11 @@ import { Fragment, useState } from 'react';
  * @param open - Boolean state. If `true`, then the drawer opens.
  * @param onClose - Function should set the open state.
  * @param children - React children node.
+ * @param heading - string. Shown at the top of the drawer
+ *
  */
 
-function Drawer({ open, onClose, children }) {
+function Drawer({ open, onClose, children, heading }) {
   return (
     <Transition appear show={open} as={Fragment}>
       <Dialog as='div' className='relative z-50' onClose={onClose}>
@@ -44,7 +46,7 @@ function Drawer({ open, onClose, children }) {
                       id='cart-contents'
                       className='whitespace-pre-wrap max-w-prose font-medium text-copy'
                     >
-                      Cart
+                      {heading}
                     </h2>
                     <button
                       type='button'

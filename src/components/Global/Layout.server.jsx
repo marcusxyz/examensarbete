@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { useShopQuery, CacheLong, gql, Seo } from '@shopify/hydrogen';
-import { useContentfulQuery } from '../api/useContentfulQuery';
-import { GET_CONTENTFUL_QUERY } from '../api/query/query';
+import { useContentfulQuery } from '../../api/useContentfulQuery';
+import { GET_CONTENTFUL_QUERY } from '../../api/query/query';
 
 /* Component imports */
 import Header from './Header.client';
@@ -22,13 +22,19 @@ export function Layout({ children }) {
     query: GET_CONTENTFUL_QUERY,
   });
 
-
   const linkText1 = contentfulData.navigationCollection.items[0].linkText;
   const linkURL1 = contentfulData.navigationCollection.items[0].linkUrl;
   const linkText2 = contentfulData.navigationCollection.items[1].linkText;
   const linkURL2 = contentfulData.navigationCollection.items[1].linkUrl;
   const linkText3 = contentfulData.navigationCollection.items[2].linkText;
   const linkURL3 = contentfulData.navigationCollection.items[2].linkUrl;
+
+  const instagramText = contentfulData.footerCollection.items[0].socialName1;
+  const instagramLink = contentfulData.footerCollection.items[0].socialLink1;
+  const facebookText = contentfulData.footerCollection.items[0].socialName2;
+  const facebookLink = contentfulData.footerCollection.items[0].socialLink2;
+  const linkedInText = contentfulData.footerCollection.items[0].socialName3;
+  const linkedInLink = contentfulData.footerCollection.items[0].socialLink3;
 
   return (
     <>
@@ -55,7 +61,12 @@ export function Layout({ children }) {
           navItemText2={linkText2}
           navItemText3={linkText3}
           navItemLink3={linkURL3}
-
+          socialLink1={instagramLink}
+          socialText1={instagramText}
+          socialLink2={facebookLink}
+          socialText2={facebookText}
+          socialLink3={linkedInLink}
+          socialText3={linkedInText}
         />
 
         <main role='main' id='mainContent' className='flex-grow'>
