@@ -18,8 +18,6 @@ export default function About() {
     const introText = contentfulData.about.introText;
     const image = contentfulData.about.image.url;
 
-    // console.log(documentToReactComponents("content"));
-
     console.log('ABOUT PAGE!');
 
     const RICHETXT_OPTIONS = {
