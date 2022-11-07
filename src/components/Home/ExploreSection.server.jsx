@@ -17,7 +17,7 @@ export default function ExploreSection() {
   return (
     <>
       <Suspense>
-        <section className='w-full border-t border-black'>
+        <section className='w-full border-y border-black'>
           {communityRenders.map((item) => (
             <div className='px-[10px] md:px-6 py-8 grid grid-cols-1 lg:grid-cols-2'>
               <div className='lg:order-last'>
