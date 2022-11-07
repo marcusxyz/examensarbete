@@ -8,7 +8,7 @@ export const GET_CONTENTFUL_QUERY = gql`
         paragraph
         buttonText
         buttonLink
-        image {
+        media {
           url
         }
       }

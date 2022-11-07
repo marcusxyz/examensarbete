@@ -17,7 +17,7 @@ export default function Hero() {
   const paragraph = contentfulData.heroCollection.items[0].paragraph;
   const btnText = contentfulData.heroCollection.items[0].buttonText;
   const btnLink = contentfulData.heroCollection.items[0].buttonLink;
-  const image = contentfulData.heroCollection.items[0].image.url;
+  const image = contentfulData.heroCollection.items[0].media.url;
 
   return (
     <>

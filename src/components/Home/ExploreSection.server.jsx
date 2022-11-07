@@ -11,7 +11,7 @@ export default function ExploreSection() {
     query: GET_CONTENTFUL_QUERY
   });
 
-  console.dir(contentfulData, { depth: 5 });
+  // console.dir(contentfulData, { depth: 5 });
   // console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
   // console.log(contentfulData.inspirationSection1Collection.items[0].title);
 
