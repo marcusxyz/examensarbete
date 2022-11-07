@@ -8,7 +8,7 @@ import {
 } from '@shopify/hydrogen';
 import { Suspense } from 'react';
 
-import { Layout } from '../../components/Layout.server';
+import { Layout } from '../../components/Global/Layout.server';
 import ProductDetails from '../../components/Product/ProductDetails.client';
 
 export default function Product({ params }) {
