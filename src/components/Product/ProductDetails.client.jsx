@@ -115,7 +115,7 @@ function PurchaseButton() {
 
   return (
     <>
-      <Drawer open={isOpen} onClose={closeDrawer}>
+      <Drawer open={isOpen} onClose={closeDrawer} heading='Cart'>
         <div className='grid'>
           <Drawer.Title>
             <p className='sr-only'>Cart Drawer</p>
