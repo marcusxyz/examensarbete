@@ -94,7 +94,7 @@ function OrderSummary() {
                 withoutTrailingZeros
               />
             ) : (
-              '$0'
+              '0'
             )}
           </dd>
         </div>
