@@ -33,7 +33,7 @@ export default function Footer() {
 
   return (
     <>
-      <div className='pt-24 border-t border-black pb-4 px-[10px] md:pt-[160px] md:px-6'>
+      <div className='pt-24 pb-4 px-[10px] md:pt-[160px] md:px-6'>
         <Image
           className='overflow-clip inline-block object-contain'
           width={'100%'}
@@ -105,7 +105,7 @@ export default function Footer() {
 
 const CATEGORY_QUERY = gql`
   query Collections {
-    collections(first: 8, sortKey: UPDATED_AT) {
+    collections(first: 8, sortKey: RELEVANCE) {
       nodes {
         id
         title

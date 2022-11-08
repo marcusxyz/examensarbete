@@ -23,7 +23,7 @@ export default function ProductDetails({ product }) {
               <ProductGallery media={product.media.nodes} />
             </div>
           </div>
-          <div className='sticky grid px-[10px] pt-6 md:pt-16 md:px-6 bg-white'>
+          <div className='sticky grid px-[10px] pt-6 pb-6 md:pt-16 md:px-6 bg-white'>
             <div className='pb-8 md:pb-14'>
               <h1 className='text-[32px] md:text-7xl font-medium whitespace-normal'>
                 {product.title}
@@ -115,7 +115,7 @@ function PurchaseButton() {
 
   return (
     <>
-      <Drawer open={isOpen} onClose={closeDrawer}>
+      <Drawer open={isOpen} onClose={closeDrawer} heading='Cart'>
         <div className='grid'>
           <Drawer.Title>
             <p className='sr-only'>Cart Drawer</p>

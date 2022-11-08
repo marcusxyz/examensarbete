@@ -1,6 +1,7 @@
 import { gql } from '@shopify/hydrogen';
 
 export const GET_CONTENTFUL_QUERY = gql`
+
 query GetContentful {
   heroCollection {
     items {
