@@ -15,6 +15,9 @@ query GetContentful {
   }
   footerCollection {
     items {
+      logo {
+        url
+      },
       socialName1
       socialLink1
       socialName2
@@ -68,12 +71,14 @@ query GetContentful {
       json
     }
   },
-  galleryCardCollection(order: sys_firstPublishedAt_DESC) {
+  galleryCardCollection (order: sys_firstPublishedAt_DESC) {
     items {
       name,
       altText,
       fabric,
+      title,
       link,
+      buttonText,
       image {
         url
       },

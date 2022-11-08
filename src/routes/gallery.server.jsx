@@ -1,6 +1,5 @@
 import { Suspense } from 'react';
-import { Seo } from '@shopify/hydrogen';
-import secondImg from '/bathroom.png'
+import { gql, Seo } from '@shopify/hydrogen';
 import { useContentfulQuery } from '../api/useContentfulQuery';
 import { GET_CONTENTFUL_QUERY } from '../api/query/query';
 
@@ -57,7 +56,7 @@ export default function Gallery() {
             <GalleryCard src={gallery.items[3].image.url} alt={gallery.items[3].altText} name={gallery.items[3].name} url={gallery.items[3].link} />
           </div>
           <div className='grid lg:row-start-7 lg:col-start-3 lg:row-span-4'>
-            <GalleryCard src={gallery.items[2].image.url} alt={gallery.items[2].altText} name={gallery.items[2].name} url={gallery.items[2].link} />
+            <GalleryCard btnText={gallery.items[2].buttonText} src={gallery.items[2].image.url} alt={gallery.items[2].altText} name={gallery.items[2].name} url={gallery.items[2].link} />
           </div>
           <div className='grid lg:row-start-8 lg:col-start-1 lg:row-span-3'>
             <GalleryCard src={gallery.items[1].image.url} alt={gallery.items[1].altText} name={gallery.items[1].name} url={gallery.items[1].link} />
