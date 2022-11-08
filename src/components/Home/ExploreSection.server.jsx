@@ -1,18 +1,11 @@
 import { Suspense } from 'react';
 import { Link, Image } from '@shopify/hydrogen';
-import bathimg from '/bathroom.png';
-import kitchimg from '/kitchen.png';
 import { ButtonSmall } from '../elements/ButtonSmall';
-import { useContentfulQuery } from '../../api/useContentfulQuery';
-import { GET_CONTENTFUL_QUERY } from '../../api/query/query';
+import { fetchContentfulQuery } from '../../api/fetchContentfulQuery';
 
 export default function ExploreSection() {
-  const { data: contentfulData } = useContentfulQuery({
-    query: GET_CONTENTFUL_QUERY,
-  });
-
-  const communityRenders = contentfulData.inspirationSection1Collection.items;
-  const aboutSection = contentfulData.inspirationSection2Collection.items;
+  const communityRenders = response.data.inspirationSection1Collection.items;
+  const aboutSection = response.data.inspirationSection2Collection.items;
 
   return (
     <>
@@ -87,3 +80,36 @@ export default function ExploreSection() {
     </>
   );
 }
+
+const EXPLORE_QUERY = `{
+  inspirationSection1Collection {
+    items {
+      title
+      subtitle
+      buttonText
+      buttonLink
+      imageTextureName
+      imageTextureLink
+      imageTakenFrom
+      image {
+        url
+      }
+    }
+  }
+  inspirationSection2Collection {
+    items {
+      title
+      subtitle
+      buttonText
+      buttonLink
+      paragraph
+      image {
+        url
+      }
+    }
+  }
+}`;
+
+const response = await fetchContentfulQuery(EXPLORE_QUERY);
+console.log('💚💚💚 NEW FETCH IN EXPLORE 💚💚💚');
+console.log(response.data);

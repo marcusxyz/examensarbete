@@ -12,10 +12,7 @@ export const useContentfulQuery = ({ query, variables, key = [] }) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${ACCESS_TOKEN}`,
       },
-      body: JSON.stringify({
-        query,
-        variables,
-      }),
+      body: JSON.stringify({ query }),
     });
     return response.json();
   });

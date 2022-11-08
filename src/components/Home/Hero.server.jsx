@@ -1,20 +1,10 @@
 import { Suspense } from 'react';
 import { Image } from '@shopify/hydrogen';
 import { ButtonSmall } from '../elements/ButtonSmall';
-import { useContentfulQuery } from '../../api/useContentfulQuery';
-import { GET_CONTENTFUL_QUERY } from '../../api/query/query';
+import { fetchContentfulQuery } from '../../api/fetchContentfulQuery';
 
 export default function Hero() {
-  const { data: contentfulData } = useContentfulQuery({
-    query: GET_CONTENTFUL_QUERY,
-  });
-
-  console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
-  // console.log(contentfulData.heroCollection.items);
-
-  const hero = contentfulData.heroCollection.items;
-
-  console.log(hero);
+  const hero = response.data.heroCollection.items;
 
   return (
     <>
@@ -47,3 +37,21 @@ export default function Hero() {
     </>
   );
 }
+
+const HERO_QUERY = `{
+  heroCollection {
+    items {
+      title
+      paragraph
+      buttonText
+      buttonLink
+      media {
+        url
+      }
+    }
+  }
+}`;
+
+const response = await fetchContentfulQuery(HERO_QUERY);
+console.log('💜💜💜 NEW FETCH IN HERO 💜💜💜');
+console.log(response.data);
