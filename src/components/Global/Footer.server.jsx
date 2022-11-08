@@ -1,6 +1,5 @@
 import { Link, Image, gql, useShopQuery, CacheLong } from '@shopify/hydrogen';
-import { GET_CONTENTFUL_QUERY } from '../../api/query/query';
-import { useContentfulQuery } from '../../api/useContentfulQuery';
+import { fetchContentfulQuery } from '../../api/fetchContentfulQuery';
 
 export default function Footer() {
   const {
@@ -10,22 +9,20 @@ export default function Footer() {
     cache: CacheLong(),
   });
 
-  const { data: contentfulData } = useContentfulQuery({
-    query: GET_CONTENTFUL_QUERY,
-  });
+  const data = response.data;
 
-  const logo = contentfulData.footerCollection.items[0].logo.url;
-  const socialName1 = contentfulData.footerCollection.items[0].socialName1;
-  const socialLink1 = contentfulData.footerCollection.items[0].socialLink1;
-  const socialName2 = contentfulData.footerCollection.items[0].socialName2;
-  const socialLink2 = contentfulData.footerCollection.items[0].socialLink2;
-  const socialName3 = contentfulData.footerCollection.items[0].socialName3;
-  const socialLink3 = contentfulData.footerCollection.items[0].socialLink3;
+  const logo = data.footerCollection.items[0].logo.url;
+  const socialName1 = data.footerCollection.items[0].socialName1;
+  const socialLink1 = data.footerCollection.items[0].socialLink1;
+  const socialName2 = data.footerCollection.items[0].socialName2;
+  const socialLink2 = data.footerCollection.items[0].socialLink2;
+  const socialName3 = data.footerCollection.items[0].socialName3;
+  const socialLink3 = data.footerCollection.items[0].socialLink3;
   const getCustomerButtonName =
-    contentfulData.footerCollection.items[0].getCustomerButtonName;
+    data.footerCollection.items[0].getCustomerButtonName;
   const getCustomerButtonLink =
-    contentfulData.footerCollection.items[0].getCustomerButtonLink;
-  const copyrightText = contentfulData.footerCollection.items[0].copyright;
+    data.footerCollection.items[0].getCustomerButtonLink;
+  const copyrightText = data.footerCollection.items[0].copyright;
 
   const marqueeStyle = `
     font-medium block align-middle px-2 md:px-4 text-2xl md:text-4xl lg:text-7xl after:content-['/'] after:font-light after:inline-block after:md:h-[42px] after:lg:h-[78px] after:align-bottom after:pl-4 md:after:pl-8
@@ -89,7 +86,8 @@ export default function Footer() {
 
           <Link
             to={getCustomerButtonLink}
-            className='w-full text-center md:text-right font-medium md:col-start-3' target='_blank'
+            className='w-full text-center md:text-right font-medium md:col-start-3'
+            target='_blank'
           >
             {getCustomerButtonName}
           </Link>
@@ -114,3 +112,26 @@ const CATEGORY_QUERY = gql`
     }
   }
 `;
+
+const FOOTER_QUERY = `{
+  footerCollection {
+    items {
+      logo {
+        url
+      }
+      socialName1
+      socialLink1
+      socialName2
+      socialLink2
+      socialName3
+      socialLink3
+      getCustomerButtonName
+      getCustomerButtonLink
+      copyright
+    }
+  }
+}`;
+
+const response = await fetchContentfulQuery(FOOTER_QUERY);
+console.log('🤍🤍🤍 NEW FETCH IN FOOTER 🤍🤍🤍');
+console.log(response.data);

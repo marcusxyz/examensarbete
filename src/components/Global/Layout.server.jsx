@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import { useShopQuery, CacheLong, gql, Seo } from '@shopify/hydrogen';
-import { useContentfulQuery } from '../../api/useContentfulQuery';
-import { GET_CONTENTFUL_QUERY } from '../../api/query/query';
+import { fetchContentfulQuery } from '../../api/fetchContentfulQuery';
 
 /* Component imports */
 import Header from './Header.client';
@@ -18,23 +17,25 @@ export function Layout({ children }) {
     cache: CacheLong(),
   });
 
-  const { data: contentfulData } = useContentfulQuery({
-    query: GET_CONTENTFUL_QUERY,
-  });
+  // const { data: contentfulData } = useContentfulQuery({
+  //   query: GET_CONTENTFUL_QUERY,
+  // });
 
-  const linkText1 = contentfulData.navigationCollection.items[0].linkText;
-  const linkURL1 = contentfulData.navigationCollection.items[0].linkUrl;
-  const linkText2 = contentfulData.navigationCollection.items[1].linkText;
-  const linkURL2 = contentfulData.navigationCollection.items[1].linkUrl;
-  const linkText3 = contentfulData.navigationCollection.items[2].linkText;
-  const linkURL3 = contentfulData.navigationCollection.items[2].linkUrl;
+  const data = response.data;
 
-  const instagramText = contentfulData.footerCollection.items[0].socialName1;
-  const instagramLink = contentfulData.footerCollection.items[0].socialLink1;
-  const facebookText = contentfulData.footerCollection.items[0].socialName2;
-  const facebookLink = contentfulData.footerCollection.items[0].socialLink2;
-  const linkedInText = contentfulData.footerCollection.items[0].socialName3;
-  const linkedInLink = contentfulData.footerCollection.items[0].socialLink3;
+  const linkText1 = data.navigationCollection.items[0].linkText;
+  const linkURL1 = data.navigationCollection.items[0].linkUrl;
+  const linkText2 = data.navigationCollection.items[1].linkText;
+  const linkURL2 = data.navigationCollection.items[1].linkUrl;
+  const linkText3 = data.navigationCollection.items[2].linkText;
+  const linkURL3 = data.navigationCollection.items[2].linkUrl;
+
+  const instagramText = data.footerCollection.items[0].socialName1;
+  const instagramLink = data.footerCollection.items[0].socialLink1;
+  const facebookText = data.footerCollection.items[0].socialName2;
+  const facebookLink = data.footerCollection.items[0].socialLink2;
+  const linkedInText = data.footerCollection.items[0].socialName3;
+  const linkedInLink = data.footerCollection.items[0].socialLink3;
 
   return (
     <>
@@ -87,3 +88,26 @@ const SHOP_QUERY = gql`
     }
   }
 `;
+
+const NAV_QUERY = `{
+  navigationCollection(order: sys_firstPublishedAt_DESC) {
+    items {
+      linkText
+      linkUrl
+    }
+  }
+  footerCollection {
+    items {
+      socialName1
+      socialLink1
+      socialName2
+      socialLink2
+      socialName3
+      socialLink3
+    }
+  }
+}`;
+
+const response = await fetchContentfulQuery(NAV_QUERY);
+console.log('🧡🧡🧡 NEW FETCH IN NAVIGATION 🧡🧡🧡');
+console.log(response.data);
