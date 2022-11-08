@@ -16,10 +16,6 @@ export default function Hero() {
 
   console.log(hero);
 
-  // {
-  //   Array.isArray(hero) ? hero.map((item) => console.log(item)) : null;
-  // }
-
   return (
     <>
       <Suspense>

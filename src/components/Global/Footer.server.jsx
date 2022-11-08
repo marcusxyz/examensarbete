@@ -1,7 +1,6 @@
 import { Link, Image, gql, useShopQuery, CacheLong } from '@shopify/hydrogen';
 import { GET_CONTENTFUL_QUERY } from '../../api/query/query';
 import { useContentfulQuery } from '../../api/useContentfulQuery';
-import logo from '/logo.svg';
 
 export default function Footer() {
   const {
@@ -15,6 +14,7 @@ export default function Footer() {
     query: GET_CONTENTFUL_QUERY,
   });
 
+  const logo = contentfulData.footerCollection.items[0].logo.url;
   const socialName1 = contentfulData.footerCollection.items[0].socialName1;
   const socialLink1 = contentfulData.footerCollection.items[0].socialLink1;
   const socialName2 = contentfulData.footerCollection.items[0].socialName2;
@@ -89,7 +89,7 @@ export default function Footer() {
 
           <Link
             to={getCustomerButtonLink}
-            className='w-full text-center md:text-right font-medium md:col-start-3'
+            className='w-full text-center md:text-right font-medium md:col-start-3' target='_blank'
           >
             {getCustomerButtonName}
           </Link>
