@@ -5,17 +5,11 @@ import { BLOCKS } from '@contentful/rich-text-types';
 
 // Components
 import { Layout } from '../components/Global/Layout.server';
-import { useContentfulQuery } from '../api/useContentfulQuery';
-import { GET_CONTENTFUL_QUERY } from '../api/query/query';
+import { fetchContentfulQuery } from '../api/fetchContentfulQuery';
 
 export default function About() {
-  const { data: contentfulData } = useContentfulQuery({
-    query: GET_CONTENTFUL_QUERY,
-  });
 
-  const title = contentfulData.about.title;
-  const introText = contentfulData.about.introText;
-  const image = contentfulData.about.image.url;
+  const about = response.data.aboutCollection.items;
 
   const RICHETXT_OPTIONS = {
     renderNode: {
@@ -64,29 +58,58 @@ export default function About() {
         />
       </Suspense>
       <header className='px-2 lg:px-48 xl:px-80 mt-8'>
-        <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4'>
-          {title}
-        </h1>
-        <p className='mb-8 md:text-lg xl:text-xl'>{introText}</p>
+        {about.map((item) => (
+          <div>
+            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4'>
+              {item.title}
+            </h1>
+            <p className='mb-8 md:text-lg xl:text-xl'>{item.introText}</p>
+          </div>
+        ))}
       </header>
       <main className='border-y border-black '>
-        <div>
-          <Image
-            className='pt-8 px-2 overflow-clip inline-block object-cover h-[375px] lg:h-[500px]'
-            width={'100%'}
-            height={'100%'}
-            alt={`Image of bathtub with big glas windows behind`}
-            src={image}
-            loading='lazy'
-          />
-        </div>
-        <div className='mt-12 px-2 lg:px-48 xl:px-80'>
-          {documentToReactComponents(
-            contentfulData.about.paragraph.json,
-            RICHETXT_OPTIONS
-          )}
-        </div>
+        {about.map((item) => (
+          <div>
+
+            <Image
+              className='pt-8 px-2 overflow-clip inline-block object-cover h-[375px] lg:h-[500px]'
+              width={'100%'}
+              height={'100%'}
+              alt={`Image of bathtub with big glas windows behind`}
+              src={item.image.url}
+              loading='lazy'
+            />
+
+            <div className='mt-12 px-2 lg:px-48 xl:px-80'>
+              {documentToReactComponents(
+                item.paragraph.json,
+                RICHETXT_OPTIONS
+              )}
+            </div>
+          </div>
+        ))}
       </main>
     </Layout>
   );
 }
+
+const ABOUT_QUERY = `{
+  aboutCollection {
+    items {
+      title
+      introText
+      image {
+        url
+      }
+      paragraph {
+        json
+      }
+    }
+    }
+}`;
+
+const response = await fetchContentfulQuery(ABOUT_QUERY);
+console.log('💚💚💚 NEW FETCH IN ABOUT 💚💚💚');
+console.log(response.data);
+
+
