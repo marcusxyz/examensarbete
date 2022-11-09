@@ -2,9 +2,9 @@ import { Image, Link } from '@shopify/hydrogen';
 
 export default function GalleryCard({ src, alt, name, url, fabric, btnText }) {
   return (
-    <div>
+    <div className='mb-6'>
       <Image
-        className='overflow-clip inline-block object-cover h-[280px] lg:h-[90%]'
+        className='overflow-clip inline-block object-contain h-auto lg:h-[100%]'
         width={'100%'}
         height={'100%'}
         alt={alt}
@@ -20,7 +20,7 @@ export default function GalleryCard({ src, alt, name, url, fabric, btnText }) {
         </div>
 
         <div className='mt-2.5'>
-          <p className='text-sm'>Using: {fabric}</p>
+          <p className='text-sm'>{fabric}</p>
         </div>
       </div>
     </div>
