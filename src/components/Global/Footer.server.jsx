@@ -9,20 +9,7 @@ export default function Footer() {
     cache: CacheLong(),
   });
 
-  const data = response.data;
-
-  const logo = data.footerCollection.items[0].logo.url;
-  const socialName1 = data.footerCollection.items[0].socialName1;
-  const socialLink1 = data.footerCollection.items[0].socialLink1;
-  const socialName2 = data.footerCollection.items[0].socialName2;
-  const socialLink2 = data.footerCollection.items[0].socialLink2;
-  const socialName3 = data.footerCollection.items[0].socialName3;
-  const socialLink3 = data.footerCollection.items[0].socialLink3;
-  const getCustomerButtonName =
-    data.footerCollection.items[0].getCustomerButtonName;
-  const getCustomerButtonLink =
-    data.footerCollection.items[0].getCustomerButtonLink;
-  const copyrightText = data.footerCollection.items[0].copyright;
+  const footer = response.data.footerCollection.items;
 
   const marqueeStyle = `
     font-medium block align-middle px-2 md:px-4 text-2xl md:text-4xl lg:text-7xl after:content-['/'] after:font-light after:inline-block after:md:h-[42px] after:lg:h-[78px] after:align-bottom after:pl-4 md:after:pl-8
@@ -30,15 +17,17 @@ export default function Footer() {
 
   return (
     <>
-      <div className='pt-24 pb-4 px-[10px] md:pt-[160px] md:px-6'>
-        <Image
-          className='overflow-clip inline-block object-contain'
-          width={'100%'}
-          height={'100%'}
-          alt={`Image of brown kitchen`}
-          src={logo}
-          loading='lazy'
-        />
+      <div className='pt-24 pb-4 px-[10px] md:pt-[160px] md:px-6 border-t border-black'>
+        {footer.map((item) => (
+          <Image
+            className='overflow-clip inline-block object-contain'
+            width={'100%'}
+            height={'100%'}
+            alt={item.altText}
+            src={item.logo.url}
+            loading='lazy'
+          />
+        ))}
       </div>
 
       <div className='bg-[#eaeaea] w-full'>
@@ -71,31 +60,33 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className='w-auto grid grid-col-1 gap-6 lg:gap-0 lg:grid-cols-3 justify-items-center md:justify-between py-8 px-[10px] md:px-6 border-t border-black'>
-          <div className='w-auto flex gap-8 md:col-start-2'>
-            <Link to={socialLink1} className='font-medium' target='_blank'>
-              {socialName1}
+        {footer.map((item) => (
+          <div className='w-auto grid grid-col-1 gap-6 lg:gap-0 lg:grid-cols-3 justify-items-center md:justify-between py-8 px-[10px] md:px-6 border-t border-black'>
+            <div className='w-auto flex gap-8 md:col-start-2'>
+              <Link to={item.socialLink1} className='font-medium' target='_blank'>
+                {item.socialName1}
+              </Link>
+              <Link to={item.socialLink2} className='font-medium' target='_blank'>
+                {item.socialName2}
+              </Link>
+              <Link to={item.socialLink3} className='font-medium' target='_blank'>
+                {item.socialName3}
+              </Link>
+            </div>
+
+            <Link
+              to={item.getCustomerButtonLink}
+              className='w-full text-center md:text-right font-medium md:col-start-3'
+              target='_blank'
+            >
+              {item.getCustomerButtonName}
             </Link>
-            <Link to={socialLink2} className='font-medium' target='_blank'>
-              {socialName2}
-            </Link>
-            <Link to={socialLink3} className='font-medium' target='_blank'>
-              {socialName3}
-            </Link>
+
+            <p className='w-full text-center md:text-left font-medium md:col-start-1 md:row-start-1'>
+              {item.copyright}
+            </p>
           </div>
-
-          <Link
-            to={getCustomerButtonLink}
-            className='w-full text-center md:text-right font-medium md:col-start-3'
-            target='_blank'
-          >
-            {getCustomerButtonName}
-          </Link>
-
-          <p className='w-full text-center md:text-left font-medium md:col-start-1 md:row-start-1'>
-            {copyrightText}
-          </p>
-        </div>
+        ))}
       </div>
     </>
   );
@@ -119,6 +110,7 @@ const FOOTER_QUERY = `{
       logo {
         url
       }
+      altText
       socialName1
       socialLink1
       socialName2

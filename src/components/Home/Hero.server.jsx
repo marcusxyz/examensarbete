@@ -15,7 +15,7 @@ export default function Hero() {
               className='overflow-clip inline-block object-cover h-[375px] md:h-[763px]'
               width={'100%'}
               height={'100%'}
-              alt={`Image of brown kitchen`}
+              alt={item.altText}
               src={item.media.url}
               loading='lazy'
             />
@@ -41,7 +41,8 @@ export default function Hero() {
 const HERO_QUERY = `{
   heroCollection {
     items {
-      title
+      title,
+      altText,
       paragraph
       buttonText
       buttonLink

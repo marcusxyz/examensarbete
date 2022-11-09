@@ -19,10 +19,10 @@ export default function GalleryCard({ src, alt, name, url, fabric, btnText }) {
           </Link>
         </div>
 
-        <div className='mt-2.5'>
-          <p className='text-sm'>{fabric}</p>
+                <div className='mt-2.5'>
+                    <p className='text-sm'>Using: {fabric}</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
