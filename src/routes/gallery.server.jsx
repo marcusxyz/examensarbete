@@ -42,8 +42,8 @@ export default function Gallery() {
         ))}
       </header>
 
-      <section className='mt-5 mb-8 px-3'>
-        <div className='flex flex-col gap-4 md:flex-row flex-wrap md:px-6'>
+      <section className='mt-5 mb-8 px-[10px] md:px-6'>
+        <div className='flex flex-col gap-6 md:flex-row flex-wrap'>
           <div className='md:flex-1'>
             {firstCol.map((item) => (
               <GalleryCard
