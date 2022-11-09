@@ -60,7 +60,7 @@ export default function About() {
       <header className='px-2 lg:px-48 xl:px-80 mt-8'>
         {about.map((item) => (
           <div>
-            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4'>
+            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 font-medium'>
               {item.title}
             </h1>
             <p className='mb-8 md:text-lg xl:text-xl'>{item.introText}</p>

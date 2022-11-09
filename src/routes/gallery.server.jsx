@@ -28,8 +28,8 @@ export default function Gallery() {
       <header className='mt-8 pb-6 px-2 border-b border-black'>
         {galleryText.map((item) => (
           <div>
-            <h1 className='text-3xl pb-4'>{item.title}</h1>
-            <p className='text-lg'>{item.introText}</p>
+            <h1 className='text-3xl lg:text-5xl xl:text-7xl pb-4 font-medium'>{item.title}</h1>
+            <p className='text-lg xl:text-xl lg:w-[70%] xl:w-[50%]'>{item.introText}</p>
           </div>
         ))}
       </header>
@@ -106,8 +106,8 @@ export default function Gallery() {
 
       {galleryText.map((item) => (
         <div className='border-t border-black py-5 px-3'>
-          <h3 className='text-2xl pb-2'>{item.outroTitle}</h3>
-          <p>{item.outroText}</p>
+          <h3 className='text-2xl lg:text-4xl xl:text-5xl pb-2'>{item.outroTitle}</h3>
+          <p className='lg:text-xl xl:text-2xl lg:w-[70%] xl:w-[50%]'>{item.outroText}</p>
         </div>
       ))}
     </Layout>
