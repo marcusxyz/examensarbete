@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { gql, Seo } from '@shopify/hydrogen';
 import { useContentfulQuery } from '../api/useContentfulQuery';
 import { GET_CONTENTFUL_QUERY } from '../api/query/query';
+import { fetchContentfulQuery } from '../api/fetchContentfulQuery';
 
 // Components
 import GalleryCard from '../components/Gallery/GalleryCard.server';
@@ -14,6 +15,14 @@ export default function Gallery() {
 
   const gallery = contentfulData.galleryCardCollection;
   const galleryText = contentfulData.galleryTextCollection.items;
+
+  const firstCol = response.data.firstGalleryColumnCollection.items;
+  const secondCol = response.data.secondGalleryColumnCollection.items;
+  const thirdCol = response.data.thirdGalleryColumnCollection.items;
+
+  console.log(firstCol);
+  console.log(secondCol);
+  console.log(thirdCol);
 
   return (
     <Layout>
@@ -35,71 +44,42 @@ export default function Gallery() {
       </header>
 
       <section className='mt-5 mb-8 px-3'>
-        <div className='mb-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-16 gap-6 md:gap-x-3'>
-          <div className='grid lg:row-start-1 lg:col-start-1 lg:row-span-2 pb-2'>
-            <GalleryCard
-              src={gallery.items[7].image.url}
-              alt={gallery.items[7].altText}
-              name={gallery.items[7].name}
-              url={gallery.items[7].link}
-            />
+        <div className='flex flex-col gap-4 md:flex-row flex-wrap md:px-6'>
+          <div className='md:flex-1'>
+            {firstCol.map((item) => (
+              <GalleryCard
+                src={item.image.url}
+                alt='test'
+                name={item.author}
+                btnText={item.linkText}
+                url={item.linkUrl}
+                fabric={item.productsUsed}
+              />
+            ))}
           </div>
-          <div className='grid lg:row-start-1 lg:col-start-2 lg:row-span-6'>
-            <GalleryCard
-              src={gallery.items[6].image.url}
-              alt={gallery.items[6].altText}
-              name={gallery.items[6].name}
-              url={gallery.items[6].link}
-            />
+          <div className='md:flex-1'>
+            {secondCol.map((item) => (
+              <GalleryCard
+                src={item.image.url}
+                alt='test'
+                name={item.author}
+                btnText={item.linkText}
+                url={item.linkUrl}
+                fabric={item.productsUsed}
+              />
+            ))}
           </div>
-          <div className='grid lg:row-start-1 lg:col-start-3 lg:row-span-6'>
-            <GalleryCard
-              src={gallery.items[5].image.url}
-              alt={gallery.items[5].altText}
-              name={gallery.items[5].name}
-              url={gallery.items[5].link}
-            />
-          </div>
-          <div className='grid lg:row-start-3 lg:col-start-1 lg:row-span-6'>
-            <GalleryCard
-              src={gallery.items[4].image.url}
-              alt={gallery.items[4].altText}
-              name={gallery.items[4].name}
-              url={gallery.items[4].link}
-            />
-          </div>
-          <div className='grid lg:row-start-7 lg:col-start-2 lg:row-span-2 pb-2'>
-            <GalleryCard
-              src={gallery.items[3].image.url}
-              alt={gallery.items[3].altText}
-              name={gallery.items[3].name}
-              url={gallery.items[3].link}
-            />
-          </div>
-          <div className='grid lg:row-start-7 lg:col-start-3 lg:row-span-4'>
-            <GalleryCard
-              btnText={gallery.items[2].buttonText}
-              src={gallery.items[2].image.url}
-              alt={gallery.items[2].altText}
-              name={gallery.items[2].name}
-              url={gallery.items[2].link}
-            />
-          </div>
-          <div className='grid lg:row-start-8 lg:col-start-1 lg:row-span-3'>
-            <GalleryCard
-              src={gallery.items[1].image.url}
-              alt={gallery.items[1].altText}
-              name={gallery.items[1].name}
-              url={gallery.items[1].link}
-            />
-          </div>
-          <div className='grid lg:row-start-8 lg:col-start-2 lg:row-span-6'>
-            <GalleryCard
-              src={gallery.items[0].image.url}
-              alt={gallery.items[0].altText}
-              name={gallery.items[0].name}
-              url={gallery.items[0].link}
-            />
+          <div className='md:flex-1'>
+            {thirdCol.map((item) => (
+              <GalleryCard
+                src={item.image.url}
+                alt='test'
+                name={item.author}
+                btnText={item.linkText}
+                url={item.linkUrl}
+                fabric={item.productsUsed}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -114,13 +94,42 @@ export default function Gallery() {
   );
 }
 
-// const SEO_QUERY = gql`
-//   query seo {
-//     page(handle: "gallery") {
-//       seo {
-//         title
-//         description
-//       }
-//     }
-//   }
-// `;
+const GALLERY_QUERY = `{
+  firstGalleryColumnCollection(order: sys_publishedAt_ASC)  {
+    items {
+      image {
+        url
+      }
+      author
+      linkText
+      linkUrl
+      productsUsed
+    }
+  }
+  secondGalleryColumnCollection(order: sys_publishedAt_ASC) {
+    items {
+      image {
+        url
+      }
+      author
+      linkText
+      linkUrl
+      productsUsed
+    }
+  }
+  thirdGalleryColumnCollection(order: sys_publishedAt_ASC) {
+    items {
+      image {
+        url
+      }
+      author
+      linkText
+      linkUrl
+      productsUsed
+    }
+  }
+}`;
+
+const response = await fetchContentfulQuery(GALLERY_QUERY);
+console.log(' 🤎🤎🤎 NEW FETCH IN GALLERY 🤎🤎🤎');
+console.log(response.data);
