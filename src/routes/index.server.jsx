@@ -9,23 +9,6 @@ import PopularCollections from '../components/Home/PopularCollections.server';
 import ExploreSection from '../components/Home/ExploreSection.server';
 
 export default function Home() {
-  // const { data: homePageData } = useContentfulQuery({
-  //   query: HOMEPAGE_QUERY,
-  //   preload: true,
-  // });
-
-  // console.log('💫👾💫 DEBUGGING IN HOMEPAGE 💫👾💫');
-  // console.log(homePageData);
-
-  // console.log('💫 HERO DATA 💫');
-  // console.log(homePageData.hero);
-  // const heroTitle = homePageData.hero.title;
-  // const paragraph = homePageData.hero.paragraph;
-
-  // console.log('💫 EXPLORE DATA 💫');
-  // console.log(homePageData.hero);
-  // const exploreTitle = homePageData.inspirationSection1.title;
-
   const {
     data: { seo },
   } = useShopQuery({
@@ -37,7 +20,12 @@ export default function Home() {
   return (
     <Layout>
       <Suspense>
-        <Seo type='homepage' data={seo} />
+        <Seo
+          type='page'
+          data={{
+            title: 'High-Resolution Textures',
+          }}
+        />
       </Suspense>
       <Suspense fallback={`Loading content...`}>
         <Hero />
