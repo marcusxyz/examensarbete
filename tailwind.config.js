@@ -18,6 +18,8 @@ module.exports = {
         },
       },
       backgroundImage: {
+        'grid-pattern-1col':
+          'repeating-linear-gradient(to left,black,black 1px,transparent 0,transparent calc(100%/2));',
         'grid-pattern-mobile':
           'repeating-linear-gradient(to left,black,black 1px,transparent 0,transparent calc(100%/2));',
         'grid-pattern-tablet':

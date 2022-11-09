@@ -50,8 +50,8 @@ export default function Collection() {
         )}
       </header>
 
-      <section className='w-full grid pb-24'>
-        <div className='grid-flex-row grid grid-cols-2 divide-x divide-black md:grid-cols-3 lg:grid-cols-4'>
+      <section className='pb-24 mr-[-1px]'>
+        <div className='grid bg-grid-pattern-mobile shadow-[0_0_0_1px_black] md:bg-grid-pattern-tablet lg:bg-grid-pattern-desktop mr-[10px] gap-[1px] grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           {collection.products.nodes.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

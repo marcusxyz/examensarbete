@@ -18,7 +18,7 @@ export default function ProductDetails({ product }) {
     <ProductOptionsProvider data={product}>
       <section className='w-full overflow-x-hidden gap-4 md:gap-8 grid border-b border-black'>
         <div className='grid items-start md:grid-cols-2 lg:grid-cols-3 divide-x divide-black'>
-          <div className='grid md:grid-flow-row gap-[1px] md:p-0 md:overflow-x-auto md:grid-cols-2 md:w-full lg:col-span-2 bg-black'>
+          <div className='grid  md:bg-grid-pattern-1col lg:bg-grid-pattern-mobile pr-[100px] shadow-[0_0_0_1px_black] gap-[1px] md:p-0 md:overflow-x-auto md:grid-cols-1 md:w-full lg:col-span-2 bg-black'>
             <div className='md:col-span-2 snap-center card-image aspect-square md:w-full w-[80vw]'>
               <ProductGallery media={product.media.nodes} />
             </div>
@@ -179,7 +179,7 @@ function ProductGallery({ media }) {
 
   return (
     <div
-      className={`grid gap-[1px] overflow-x-scroll grid-flow-col md:grid-flow-row  md:p-0 md:overflow-x-auto md:grid-cols-2 w-screen md:w-full lg:col-span-2`}
+      className={`grid gap-[1px] overflow-x-scroll grid-flow-col md:grid-flow-row  md:p-0 md:overflow-x-auto md:grid-cols-1 lg:grid-cols-2 w-screen md:w-full lg:col-span-2`}
     >
       {media.map((med, i) => {
         let extraProps = {};
