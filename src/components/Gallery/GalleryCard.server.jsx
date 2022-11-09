@@ -20,7 +20,7 @@ export default function GalleryCard({ src, alt, name, url, fabric, btnText }) {
         </div>
 
         <div className='mt-2.5'>
-          <p className='text-sm'>Using: {fabric}</p>
+          <p className='text-sm'>{fabric}</p>
         </div>
       </div>
     </div>

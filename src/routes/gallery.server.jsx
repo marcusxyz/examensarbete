@@ -13,7 +13,6 @@ export default function Gallery() {
     query: GET_CONTENTFUL_QUERY,
   });
 
-  const gallery = contentfulData.galleryCardCollection;
   const galleryText = contentfulData.galleryTextCollection.items;
 
   const firstCol = response.data.firstGalleryColumnCollection.items;
