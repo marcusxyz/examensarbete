@@ -67,7 +67,7 @@ export default function About() {
           </div>
         ))}
       </header>
-      <main className='border-y border-black '>
+      <main className='border-t border-black '>
         {about.map((item) => (
           <div>
 
@@ -75,7 +75,7 @@ export default function About() {
               className='pt-8 px-2 overflow-clip inline-block object-cover h-[375px] lg:h-[500px]'
               width={'100%'}
               height={'100%'}
-              alt={`Image of bathtub with big glas windows behind`}
+              alt={item.altText}
               src={item.image.url}
               loading='lazy'
             />
@@ -96,11 +96,12 @@ export default function About() {
 const ABOUT_QUERY = `{
   aboutCollection {
     items {
-      title
-      introText
+      title,
+      introText,
+      altText,
       image {
         url
-      }
+      },
       paragraph {
         json
       }

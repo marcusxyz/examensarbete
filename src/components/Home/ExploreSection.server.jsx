@@ -10,7 +10,7 @@ export default function ExploreSection() {
   return (
     <>
       <Suspense>
-        <section className='w-full border-y border-black'>
+        <section className='w-full border-t border-black'>
           {communityRenders.map((item) => (
             <div className='px-[10px] md:px-6 py-8 grid grid-cols-1 lg:grid-cols-2'>
               <div className='lg:order-last'>
@@ -18,7 +18,7 @@ export default function ExploreSection() {
                   className='overflow-clip inline-block object-cover h-[375px] xl:h-[700px]'
                   width={'100%'}
                   height={'100%'}
-                  alt={`Image of bathtub with big glas windows behind`}
+                  alt={item.altText}
                   src={item.image.url}
                   loading='lazy'
                 />
@@ -50,7 +50,7 @@ export default function ExploreSection() {
                   className='overflow-clip inline-block object-cover h-[375px] lg:h-[500px] xl:h-[800px]'
                   width={'100%'}
                   height={'100%'}
-                  alt={`Image of light brown kitchen`}
+                  alt={item.altText}
                   src={item.image.url}
                   loading='lazy'
                 />
@@ -84,7 +84,8 @@ export default function ExploreSection() {
 const EXPLORE_QUERY = `{
   inspirationSection1Collection {
     items {
-      title
+      title,
+      altText,
       subtitle
       buttonText
       buttonLink
@@ -98,7 +99,8 @@ const EXPLORE_QUERY = `{
   }
   inspirationSection2Collection {
     items {
-      title
+      title,
+      altText,
       subtitle
       buttonText
       buttonLink
