@@ -3,9 +3,7 @@ import { defineConfig } from '@shopify/hydrogen/config';
 export default defineConfig({
   shopify: {
     storeDomain: 'texturesupply.myshopify.com',
-    storefrontToken:
-      process?.env['PUBLIC_STOREFRONT_API_TOKEN'] ||
-      Oxygen?.env?.PUBLIC_STOREFRONT_API_TOKEN,
+    storefrontToken: Oxygen?.env?.PUBLIC_STOREFRONT_API_TOKEN,
     storefrontApiVersion: '2022-07',
   },
   logger: {
