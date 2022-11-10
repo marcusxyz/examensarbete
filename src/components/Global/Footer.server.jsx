@@ -65,21 +65,21 @@ export default function Footer() {
             <div className='w-auto flex gap-8 md:col-start-2'>
               <Link
                 to={item.socialLink1}
-                className='font-medium'
+                className='font-medium hover:underline'
                 target='_blank'
               >
                 {item.socialName1}
               </Link>
               <Link
                 to={item.socialLink2}
-                className='font-medium'
+                className='font-medium hover:underline'
                 target='_blank'
               >
                 {item.socialName2}
               </Link>
               <Link
                 to={item.socialLink3}
-                className='font-medium'
+                className='font-medium hover:underline'
                 target='_blank'
               >
                 {item.socialName3}
@@ -88,7 +88,7 @@ export default function Footer() {
 
             <Link
               to={item.getCustomerButtonLink}
-              className='w-full text-center md:text-right font-medium md:col-start-3'
+              className='w-full text-center md:text-right font-medium md:col-start-3 hover:underline self-end'
               target='_blank'
             >
               {item.getCustomerButtonName}

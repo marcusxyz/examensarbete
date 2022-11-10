@@ -1,9 +1,10 @@
-import { useUrl, Link, useCart } from '@shopify/hydrogen';
+import { Link, Image, useCart } from '@shopify/hydrogen';
 
 // import components
 import { CartDrawer } from '../Cart/CartDrawer.client';
 import { MenuDrawer } from './MenuDrawer.client';
 import { useDrawer } from '../Cart/Drawer.client';
+import logo from '../../assets/logo-wide.svg';
 
 export default function Header({
   shop,
@@ -55,11 +56,16 @@ export default function Header({
         className='flex items-center h-14 md:h-[86px] p-[10px] md:p-6 sticky z-40 top-0 justify-between w-full leading-none gap-4 antialiased transition border-b border-black text-black bg-white'
       >
         <div className='flex justify-between items-center w-full'>
-          <div className=''>
-            <Link className='font-medium' to='/'>
-              {shop.name}
-            </Link>
-          </div>
+          <Link className='inline-block' to='/'>
+            <Image
+              className='h-[32px] md:h-[35px]'
+              width={'100%'}
+              height={'100%'}
+              alt='Texture Supply logotype'
+              src={logo}
+              loading='lazy'
+            />
+          </Link>
 
           <div className='hidden md:flex gap-8'>
             <Link className='font-medium hover:underline' to={navItemLink3}>

@@ -159,8 +159,8 @@ function OptionRadio({ values, name }) {
               onChange={() => setSelectedOption(name, value)}
             />
             <div
-              className={`flex flex-col leading-none rounded-sm px-6 py-6 border-[2px] bg-[#F5F5F5] cursor-pointer transition-all duration-200 ${
-                checked ? 'border-black' : 'border-[#f5f5f5]'
+              className={`flex flex-col leading-none rounded-sm px-6 py-6 border-[2px] bg-[#eaeaea] cursor-pointer transition-all duration-200 ${
+                checked ? 'border-black' : 'border-[#eaeaea]'
               }`}
             >
               <p className='font-medium'>{value}</p>
@@ -179,19 +179,10 @@ function ProductGallery({ media }) {
 
   return (
     <div
-      className={`grid gap-[1px] overflow-x-scroll grid-flow-col md:grid-flow-row  md:p-0 md:overflow-x-auto md:grid-cols-2 w-screen md:w-full lg:col-span-2`}
+      className={`grid gap-[1px] overflow-x-scroll grid-flow-col md:grid-flow-row  md:p-0 md:overflow-x-auto md:grid-cols-2 w-screen md:w-full lg:col-span-2 border-b border-black`}
     >
       {media.map((med, i) => {
         let extraProps = {};
-
-        if (med.mediaContentType === 'MODEL_3D') {
-          extraProps = {
-            interactionPromptThreshold: '0',
-            ar: true,
-            loading: 'eager',
-            disableZoom: true,
-          };
-        }
 
         const data = {
           ...med,
