@@ -34,7 +34,7 @@ export default function About() {
         );
       },
       [BLOCKS.PARAGRAPH]: (node, children) => {
-        return <p className='mb-6 md:text-lg xl:text-xl'>{children}</p>;
+        return <p className='pb-6 md:text-lg xl:text-base'>{children}</p>;
       },
       [BLOCKS.HEADING_5]: (node, children) => {
         return (
@@ -56,7 +56,7 @@ export default function About() {
           }}
         />
       </Suspense>
-      <header className='px-[10px] mb-8 md:px-6 pt-12 md:pt-16 md:w-[924px] m-auto'>
+      <header className='px-[10px] pb-8 md:pb-12 md:px-6 pt-12 md:pt-16 md:w-[924px] m-auto'>
         {about.map((item) => (
           <div>
             <h1 className='text-[32px] md:text-5xl lg:text-7xl mb-2 md:mb-6 font-medium leading-normal'>
@@ -66,19 +66,16 @@ export default function About() {
           </div>
         ))}
       </header>
-      <main className='border-t border-black px-[10px] md:px-6 '>
+      <main className='border-b border-black px-[10px] md:px-6 pb-12 md:pb-16'>
         {about.map((item) => (
           <div>
-            <Image
-              className='pt-8 overflow-clip inline-block object-cover h-[375px] md:h-[960px]'
-              width={'100%'}
-              height={'100%'}
-              alt={item.altText}
-              src={item.image.url}
-              loading='lazy'
-            />
+            <div className='w-full h-[80vw] m-auto lg:w-[1024px] lg:h-[640px] object-cover overflow-hidden'>
+              <video className='w-full object-contain' autoPlay muted loop>
+                <source src={item.media.url} type='video/mp4' />
+              </video>
+            </div>
 
-            <div className='my-12 md:w-[924px] m-auto'>
+            <div className='py-12 md:w-[924px] m-auto'>
               {documentToReactComponents(item.paragraph.json, RICHTEXT_OPTIONS)}
             </div>
           </div>
@@ -96,7 +93,7 @@ const ABOUT_QUERY = `{
         json
       }
       altText,
-      image {
+      media {
         url
       },
       paragraph {

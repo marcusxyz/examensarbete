@@ -12,7 +12,7 @@ export default function ExploreSection() {
       <Suspense>
         <section className='w-full border-t border-black'>
           {communityRenders.map((item) => (
-            <div className='px-[10px] md:px-6 py-8 grid grid-cols-1 lg:grid-cols-2'>
+            <div className='px-[10px] md:px-6 py-8 grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-6'>
               <div className='lg:order-last'>
                 <Image
                   className='overflow-clip inline-block object-cover h-[375px] xl:h-[700px]'
@@ -23,15 +23,18 @@ export default function ExploreSection() {
                   loading='lazy'
                 />
               </div>
-              <div className='lg:order-first lg:relative'>
-                <h3 className='font-medium pt-2 md:pt-0 text-2xl lg:text-3xl xl:text-5xl lg:mb-4'>
-                  {item.title}
-                </h3>
-                <p className='mb-8 lg:text-lg xl:text-2xl'>{item.subtitle}</p>
+              <div className='lg:order-first flex flex-col justify-between'>
+                <div className='flex flex-col gap-4 lg:gap-8'>
+                  <div className='flex flex-col md:gap-2'>
+                    <h3 className='font-medium pt-2 md:pt-0 text-2xl lg:text-3xl xl:text-5xl'>
+                      {item.title}
+                    </h3>
+                    <p className='lg:text-lg xl:text-2xl'>{item.subtitle}</p>
+                  </div>
+                  <ButtonSmall to={item.buttonLink} btnName={item.buttonText} />
+                </div>
 
-                <ButtonSmall to={item.buttonLink} btnName={item.buttonText} />
-
-                <div className='hidden lg:absolute bottom-0 right-4 lg:flex flex-col items-end'>
+                <div className='hidden lg:flex flex-col items-end'>
                   <h4 className='font-medium xl:text-2xl'>
                     {item.imageTakenFrom}
                   </h4>
@@ -49,7 +52,7 @@ export default function ExploreSection() {
           ))}
           {aboutSection.map((item) => (
             <>
-              <div className='pt-8 border-t border-black'>
+              <div className='py-8 flex flex-col gap-4 border-t border-black'>
                 <Image
                   className='overflow-clip inline-block object-cover h-[375px] lg:h-[500px] xl:h-[800px]'
                   width={'100%'}
@@ -59,12 +62,12 @@ export default function ExploreSection() {
                   loading='lazy'
                 />
 
-                <div className='px-[10px] md:px-6 lg:flex items-start justify-between lg:mt-4 '>
+                <div className='px-[10px] md:px-6 flex flex-col gap-4 items-start justify-between lg:pt-4 lg:flex-row'>
                   <div>
-                    <h3 className='font-medium mt-4 lg:mt-0 text-2xl lg:text-3xl xl:text-5xl'>
+                    <h3 className='font-medium text-2xl lg:text-3xl xl:text-5xl'>
                       {item.title}
                     </h3>
-                    <p className='mb-8 lg:mb-0 lg:text-lg xl:text-2xl xl:mt-2'>
+                    <p className='lg:mb-0 lg:text-lg xl:mt-2'>
                       {item.subtitle}
                     </p>
                   </div>
@@ -72,7 +75,7 @@ export default function ExploreSection() {
                   <ButtonSmall to={item.buttonLink} btnName={item.buttonText} />
                 </div>
               </div>
-              <div className='mt-8 lg:mt-4 px-[10px] md:px-6 pt-4 pb-8 md:pb-6 border-t border-black'>
+              <div className='px-[10px] md:px-6 pt-6 pb-8 md:pb-6 border-y border-black'>
                 <p className='lg:max-w-[70%] xl:max-w-[50%]'>
                   {item.paragraph}
                 </p>
