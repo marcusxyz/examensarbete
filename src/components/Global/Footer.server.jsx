@@ -17,7 +17,7 @@ export default function Footer() {
 
   return (
     <>
-      <div className='pt-24 pb-4 px-[10px] md:pt-[160px] md:px-6 border-t border-black'>
+      <div className='pt-24 pb-4 px-[10px] md:pt-[160px] md:px-6'>
         {footer.map((item) => (
           <Image
             className='overflow-clip inline-block object-contain'
@@ -61,15 +61,27 @@ export default function Footer() {
         </div>
 
         {footer.map((item) => (
-          <div className='w-auto grid grid-col-1 gap-6 lg:gap-0 lg:grid-cols-3 justify-items-center md:justify-between py-8 px-[10px] md:px-6 border-t border-black'>
+          <div className='w-auto grid grid-col-1 gap-6 lg:gap-0 lg:grid-cols-3 justify-items-center md:justify-between py-8 px-[10px] md:px-6'>
             <div className='w-auto flex gap-8 md:col-start-2'>
-              <Link to={item.socialLink1} className='font-medium' target='_blank'>
+              <Link
+                to={item.socialLink1}
+                className='font-medium'
+                target='_blank'
+              >
                 {item.socialName1}
               </Link>
-              <Link to={item.socialLink2} className='font-medium' target='_blank'>
+              <Link
+                to={item.socialLink2}
+                className='font-medium'
+                target='_blank'
+              >
                 {item.socialName2}
               </Link>
-              <Link to={item.socialLink3} className='font-medium' target='_blank'>
+              <Link
+                to={item.socialLink3}
+                className='font-medium'
+                target='_blank'
+              >
                 {item.socialName3}
               </Link>
             </div>

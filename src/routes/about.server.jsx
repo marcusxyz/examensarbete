@@ -8,10 +8,9 @@ import { Layout } from '../components/Global/Layout.server';
 import { fetchContentfulQuery } from '../api/fetchContentfulQuery';
 
 export default function About() {
-
   const about = response.data.aboutCollection.items;
 
-  const RICHETXT_OPTIONS = {
+  const RICHTEXT_OPTIONS = {
     renderNode: {
       [BLOCKS.HEADING_2]: (node, children) => {
         return (
@@ -39,7 +38,7 @@ export default function About() {
       },
       [BLOCKS.HEADING_5]: (node, children) => {
         return (
-          <p className='text-sm md:text-base xl:text-xl pb-6 pl-6'>
+          <p className='text-sm md:text-base xl:text-copy pb-6 pl-6'>
             {children}
           </p>
         );
@@ -57,22 +56,21 @@ export default function About() {
           }}
         />
       </Suspense>
-      <header className='px-2 lg:px-48 xl:px-80 mt-8'>
+      <header className='px-[10px] mb-8 md:px-6 pt-12 md:pt-16 md:w-[924px] m-auto'>
         {about.map((item) => (
           <div>
-            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 font-medium'>
+            <h1 className='text-[32px] md:text-5xl lg:text-7xl mb-2 md:mb-6 font-medium leading-normal'>
               {item.title}
             </h1>
-            <p className='mb-8 md:text-lg xl:text-xl'>{item.introText}</p>
+            {documentToReactComponents(item.introText.json, RICHTEXT_OPTIONS)}
           </div>
         ))}
       </header>
-      <main className='border-t border-black '>
+      <main className='border-t border-black px-[10px] md:px-6 '>
         {about.map((item) => (
           <div>
-
             <Image
-              className='pt-8 px-2 overflow-clip inline-block object-cover h-[375px] lg:h-[500px]'
+              className='pt-8 overflow-clip inline-block object-cover h-[375px] md:h-[960px]'
               width={'100%'}
               height={'100%'}
               alt={item.altText}
@@ -80,11 +78,8 @@ export default function About() {
               loading='lazy'
             />
 
-            <div className='mt-12 px-2 lg:px-48 xl:px-80'>
-              {documentToReactComponents(
-                item.paragraph.json,
-                RICHETXT_OPTIONS
-              )}
+            <div className='my-12 md:w-[924px] m-auto'>
+              {documentToReactComponents(item.paragraph.json, RICHTEXT_OPTIONS)}
             </div>
           </div>
         ))}
@@ -97,7 +92,9 @@ const ABOUT_QUERY = `{
   aboutCollection {
     items {
       title,
-      introText,
+      introText {
+        json
+      }
       altText,
       image {
         url
@@ -112,5 +109,3 @@ const ABOUT_QUERY = `{
 const response = await fetchContentfulQuery(ABOUT_QUERY);
 console.log('💚💚💚 NEW FETCH IN ABOUT 💚💚💚');
 console.log(response.data);
-
-

@@ -62,14 +62,14 @@ export default function Header({
           </div>
 
           <div className='hidden md:flex gap-8'>
-            <Link className='font-medium' to={navItemLink3}>
+            <Link className='font-medium hover:underline' to={navItemLink3}>
               {navItemText3}
             </Link>
-            <Link className='font-medium' to={navItemLink2}>
+            <Link className='font-medium hover:underline' to={navItemLink2}>
               {navItemText2}
             </Link>
 
-            <Link className='font-medium' to={navItemLink1}>
+            <Link className='font-medium hover:underline' to={navItemLink1}>
               {navItemText1}
             </Link>
           </div>
@@ -78,7 +78,7 @@ export default function Header({
               onClick={openCart}
               className='relative flex items-center justify-center'
             >
-              <div className='flex items-center justify-center gap-1'>
+              <div className='flex items-center justify-center gap-1 hover:underline'>
                 <span className='hidden md:block font-medium'>Cart</span>
                 <IconBag />
                 <CartBadge className='block md:hidden' />
