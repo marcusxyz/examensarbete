@@ -1,7 +1,5 @@
 import { Suspense } from 'react';
 import { Seo } from '@shopify/hydrogen';
-import { useContentfulQuery } from '../api/useContentfulQuery';
-import { GET_CONTENTFUL_QUERY } from '../api/query/query';
 import { fetchContentfulQuery } from '../api/fetchContentfulQuery';
 
 // Components
@@ -9,11 +7,7 @@ import GalleryCard from '../components/Gallery/GalleryCard.server';
 import { Layout } from '../components/Global/Layout.server';
 
 export default function Gallery() {
-  const { data: contentfulData } = useContentfulQuery({
-    query: GET_CONTENTFUL_QUERY,
-  });
-
-  const galleryText = contentfulData.galleryTextCollection.items;
+  const galleryText = response.data.galleryTextCollection.items;
 
   const firstCol = response.data.firstGalleryColumnCollection.items;
   const secondCol = response.data.secondGalleryColumnCollection.items;
@@ -29,7 +23,7 @@ export default function Gallery() {
           }}
         />
       </Suspense>
-      <header className='pt-12 pb-8 px-[10px] md:px-6 md:pt-16 border-b border-black'>
+      <header className='pt-12 pb-8 px-[10px] md:px-6 md:pt-16'>
         {galleryText.map((item) => (
           <div className='w-auto md:w-[75%] lg:w-[50%] flex flex-col gap-4'>
             <h1 className='font-medium text-[32px] md:text-7xl'>
@@ -96,6 +90,14 @@ export default function Gallery() {
 }
 
 const GALLERY_QUERY = `{
+  galleryTextCollection {
+    items {
+      title
+      introText
+      outroTitle
+      outroText
+    }
+  }
   firstGalleryColumnCollection(order: sys_publishedAt_ASC)  {
     items {
       image {

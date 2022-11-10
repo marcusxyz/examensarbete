@@ -37,8 +37,8 @@ export default function ProductList() {
       <Suspense>
         <Seo type='collection' data={collection} />
       </Suspense>
-      <header className='grid w-full gap-8 py-8 lg:justify-items-start border-b border-black'>
-        <h1 className='text-7xl whitespace-pre-wrap font-bold inline-block px-[10px] md:px-6'>
+      <header className='grid w-full gap-8 mt-12 md:mt-16 pb-8 lg:justify-items-start border-b border-black'>
+        <h1 className='text-7xl whitespace-pre-wrap font-medium inline-block px-[10px] md:px-6'>
           {collection.title}
         </h1>
         {collection.description && (

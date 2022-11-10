@@ -21,10 +21,10 @@ export default function Hero() {
             />
             <div className='flex flex-col md:justify-between gap-4 px-2 lg:px-4 py-4 lg:py-6 border-b md:border-l md:border-b-0 border-black'>
               <div>
-                <h1 className='text-4xl lg:text-5xl xl:text-6xl'>
+                <h1 className='text-4xl font-medium lg:text-5xl xl:text-7xl'>
                   {item.title}
                 </h1>
-                <p className='text-lg lg:w-[75%] mt-4'>{item.paragraph}</p>
+                <p className='text-lg lg:w-[50%] mt-4'>{item.paragraph}</p>
               </div>
 
               <div className='my-4'>

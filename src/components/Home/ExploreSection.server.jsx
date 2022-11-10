@@ -24,7 +24,7 @@ export default function ExploreSection() {
                 />
               </div>
               <div className='lg:order-first lg:relative'>
-                <h3 className='pt-2 md:pt-0 text-2xl lg:text-3xl xl:text-5xl lg:mb-4'>
+                <h3 className='font-medium pt-2 md:pt-0 text-2xl lg:text-3xl xl:text-5xl lg:mb-4'>
                   {item.title}
                 </h3>
                 <p className='mb-8 lg:text-lg xl:text-2xl'>{item.subtitle}</p>
@@ -35,7 +35,11 @@ export default function ExploreSection() {
                   <h4 className='font-medium xl:text-2xl'>
                     {item.imageTakenFrom}
                   </h4>
-                  <Link to={item.imageTextureLink} target='_blank'>
+                  <Link
+                    className='hover:underline'
+                    to={item.imageTextureLink}
+                    target='_blank'
+                  >
                     {item.imageTextureLink}
                   </Link>
                   <p>Using: {item.imageTextureName}</p>
@@ -57,7 +61,7 @@ export default function ExploreSection() {
 
                 <div className='px-[10px] md:px-6 lg:flex items-start justify-between lg:mt-4 '>
                   <div>
-                    <h3 className='mt-4 lg:mt-0 text-2xl lg:text-3xl xl:text-5xl'>
+                    <h3 className='font-medium mt-4 lg:mt-0 text-2xl lg:text-3xl xl:text-5xl'>
                       {item.title}
                     </h3>
                     <p className='mb-8 lg:mb-0 lg:text-lg xl:text-2xl xl:mt-2'>
