@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import { Image } from '@shopify/hydrogen';
 import { ButtonSmall } from '../elements/ButtonSmall';
 import { fetchContentfulQuery } from '../../api/fetchContentfulQuery';
 
@@ -11,14 +10,12 @@ export default function Hero() {
       <Suspense>
         {hero.map((item) => (
           <section className='grid grid-cols-1 md:grid-cols-2'>
-            <Image
-              className='overflow-clip inline-block object-cover h-[375px] md:h-[763px]'
-              width={'100%'}
-              height={'100%'}
-              alt={item.altText}
-              src={item.media.url}
-              loading='lazy'
-            />
+            <div className='w-full h-[80vw] md:h-[60vw] lg:h-[40vw] object-cover'>
+              <video className='h-full object-cover' autoPlay muted loop>
+                <source src={item.videoTesting.url} type='video/mp4' />
+              </video>
+            </div>
+
             <div className='flex flex-col md:justify-between gap-4 px-2 lg:px-4 py-4 lg:py-6 border-b md:border-l md:border-b-0 border-black'>
               <div>
                 <h1 className='text-4xl font-medium lg:text-5xl xl:text-7xl'>
@@ -45,8 +42,8 @@ const HERO_QUERY = `{
       altText,
       paragraph
       buttonText
-      buttonLink
-      media {
+      buttonLink,
+      videoTesting{
         url
       }
     }
