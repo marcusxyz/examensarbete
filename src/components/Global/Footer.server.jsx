@@ -61,7 +61,7 @@ export default function Footer() {
         </div>
 
         {footer.map((item) => (
-          <div className='w-auto grid grid-col-1 gap-6 lg:gap-0 lg:grid-cols-3 justify-items-center md:justify-between py-8 px-[10px] md:px-6'>
+          <div className='w-auto grid grid-col-1 gap-6 lg:gap-0 lg:grid-cols-3 justify-items-center md:justify-between py-8 px-[10px] md:px-6 border-t border-black'>
             <div className='w-auto flex gap-8 md:col-start-2'>
               <Link
                 to={item.socialLink1}
