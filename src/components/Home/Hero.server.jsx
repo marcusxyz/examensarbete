@@ -11,7 +11,7 @@ export default function Hero() {
       <Suspense>
         {hero.map((item) => (
           <section className='grid grid-cols-1 md:grid-cols-2'>
-            <div className='w-full h-[80vw] md:h-[60vw] lg:h-[40vw] object-cover'>
+            <div className='w-full h-[80vw] md:h-[60vw] lg:h-[50vw] object-cover'>
               <video className='h-full object-cover' autoPlay muted loop>
                 <source src={item.videoTesting.url} type='video/mp4' />
               </video>
