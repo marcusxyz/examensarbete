@@ -145,8 +145,6 @@ function OptionRadio({ values, name }) {
         const checked = selectedOptions[name] === value;
         const id = `option-${name}-${value}`;
 
-        // console.log(value);
-
         return (
           <label key={id} htmlFor={id}>
             <input
@@ -159,9 +157,8 @@ function OptionRadio({ values, name }) {
               onChange={() => setSelectedOption(name, value)}
             />
             <div
-              className={`flex flex-col leading-none rounded-sm px-6 py-6 border-[2px] bg-[#eaeaea] cursor-pointer transition-all duration-200 ${
-                checked ? 'border-black' : 'border-[#eaeaea]'
-              }`}
+              className={`flex flex-col leading-none rounded-sm px-6 py-6 border-[2px] bg-[#eaeaea] cursor-pointer transition-all duration-200 ${checked ? 'border-black' : 'border-[#eaeaea]'
+                }`}
             >
               <p className='font-medium'>{value}</p>
             </div>
@@ -194,9 +191,8 @@ function ProductGallery({ media }) {
 
         return (
           <div
-            className={`${
-              i % 3 === 0 ? 'md:col-span-1' : 'md:col-span-1'
-            } snap-center card-image bg-white aspect-square md:w-full w-[80vw]`}
+            className={`${i % 3 === 0 ? 'md:col-span-1' : 'md:col-span-1'
+              } snap-center card-image bg-white aspect-square md:w-full w-[80vw]`}
             key={med.id || med.image.id}
           >
             <MediaFile

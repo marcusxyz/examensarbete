@@ -10,6 +10,8 @@ import { fetchContentfulQuery } from '../api/fetchContentfulQuery';
 export default function About() {
   const about = response.data.aboutCollection.items;
 
+
+  // Style Rich Text from Contenful
   const RICHTEXT_OPTIONS = {
     renderNode: {
       [BLOCKS.HEADING_2]: (node, children) => {
@@ -56,7 +58,7 @@ export default function About() {
           }}
         />
       </Suspense>
-      <header className='px-[10px] pb-8 md:pb-12 md:px-6 pt-12 md:pt-16 md:w-[924px] m-auto'>
+      <header className='px-[10px] pb-8 md:pb-12 md:px-6 pt-12 md:pt-16 lg:w-[924px] m-auto'>
         {about.map((item) => (
           <div>
             <h1 className='text-[32px] md:text-5xl lg:text-7xl mb-2 md:mb-6 font-medium leading-normal'>
@@ -75,7 +77,7 @@ export default function About() {
               </video>
             </div>
 
-            <div className='py-12 md:w-[924px] m-auto'>
+            <div className='pt-12 lg:w-[924px] m-auto'>
               {documentToReactComponents(item.paragraph.json, RICHTEXT_OPTIONS)}
             </div>
           </div>
@@ -103,6 +105,3 @@ const ABOUT_QUERY = `{
     }
 }`;
 
-const response = await fetchContentfulQuery(ABOUT_QUERY);
-console.log('💚💚💚 NEW FETCH IN ABOUT 💚💚💚');
-console.log(response.data);

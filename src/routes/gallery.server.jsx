@@ -7,6 +7,7 @@ import GalleryCard from '../components/Gallery/GalleryCard.server';
 import { Layout } from '../components/Global/Layout.server';
 
 export default function Gallery() {
+
   const galleryText = response.data.galleryTextCollection.items;
 
   const firstCol = response.data.firstGalleryColumnCollection.items;
@@ -136,6 +137,4 @@ const GALLERY_QUERY = `{
   }
 }`;
 
-const response = await fetchContentfulQuery(GALLERY_QUERY);
-console.log(' 🤎🤎🤎 NEW FETCH IN GALLERY 🤎🤎🤎');
-console.log(response.data);
+

@@ -119,6 +119,3 @@ const EXPLORE_QUERY = `{
   }
 }`;
 
-const response = await fetchContentfulQuery(EXPLORE_QUERY);
-console.log('💚💚💚 NEW FETCH IN EXPLORE 💚💚💚');
-console.log(response.data);

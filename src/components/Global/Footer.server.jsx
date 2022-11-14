@@ -136,6 +136,3 @@ const FOOTER_QUERY = `{
   }
 }`;
 
-const response = await fetchContentfulQuery(FOOTER_QUERY);
-console.log('🤍🤍🤍 NEW FETCH IN FOOTER 🤍🤍🤍');
-console.log(response.data);

@@ -3,10 +3,8 @@ import { Link, Image, Money } from '@shopify/hydrogen';
 export default function ProductCard({ product }) {
   const { priceV2: price } = product.variants?.nodes[0] || {};
 
-  // console.log(amount);
   const amount = price?.amount;
   const alternativeImage = product.variants.nodes[0];
-  // console.log(alternativeImage);
 
   return (
     <Link to={`products/${product.handle}`} className='group'>

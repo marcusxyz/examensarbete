@@ -108,6 +108,3 @@ const NAV_QUERY = `{
   }
 }`;
 
-const response = await fetchContentfulQuery(NAV_QUERY);
-console.log('🧡🧡🧡 NEW FETCH IN NAVIGATION 🧡🧡🧡');
-console.log(response.data);

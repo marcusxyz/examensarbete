@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import { Link } from '@shopify/hydrogen';
 import { ButtonSmall } from '../elements/ButtonSmall';
 import { fetchContentfulQuery } from '../../api/fetchContentfulQuery';
 
@@ -50,6 +49,3 @@ const HERO_QUERY = `{
   }
 }`;
 
-const response = await fetchContentfulQuery(HERO_QUERY);
-console.log('💜💜💜 NEW FETCH IN HERO 💜💜💜');
-console.log(response.data);

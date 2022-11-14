@@ -1,5 +1,4 @@
 import {
-  useLocalization,
   useShopQuery,
   Seo,
   useServerAnalytics,

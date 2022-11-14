@@ -8,8 +8,6 @@ export default function PopularCollections() {
     query: QUERY,
     cache: CacheLong(),
   });
-  // console.log('💫👾💫 DEBUGGING IN PROGRESS 💫👾💫');
-  // console.log(collections.nodes[0]);
 
   return (
     <section className='w-full py-20 px-[10px] md:px-6 md:py-40'>
