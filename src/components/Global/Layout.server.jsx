@@ -108,3 +108,4 @@ const NAV_QUERY = `{
   }
 }`;
 
+const response = await fetchContentfulQuery(NAV_QUERY);

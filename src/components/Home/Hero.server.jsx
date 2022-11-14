@@ -49,3 +49,4 @@ const HERO_QUERY = `{
   }
 }`;
 
+const response = await fetchContentfulQuery(HERO_QUERY);

@@ -105,3 +105,4 @@ const ABOUT_QUERY = `{
     }
 }`;
 
+const response = await fetchContentfulQuery(ABOUT_QUERY);

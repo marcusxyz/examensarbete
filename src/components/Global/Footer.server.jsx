@@ -136,3 +136,4 @@ const FOOTER_QUERY = `{
   }
 }`;
 
+const response = await fetchContentfulQuery(FOOTER_QUERY);

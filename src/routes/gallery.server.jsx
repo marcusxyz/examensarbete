@@ -137,4 +137,4 @@ const GALLERY_QUERY = `{
   }
 }`;
 
-
+const response = await fetchContentfulQuery(GALLERY_QUERY);

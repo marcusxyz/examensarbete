@@ -119,3 +119,4 @@ const EXPLORE_QUERY = `{
   }
 }`;
 
+const response = await fetchContentfulQuery(EXPLORE_QUERY);
