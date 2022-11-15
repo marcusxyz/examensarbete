@@ -44,7 +44,7 @@ export default function ProductList() {
         {collection.description && (
           <div className='flex items-baseline justify-between w-full'>
             <div className=''>
-              <p className='max-w-lg whitespace-pre-wrap inherit text-copy inline-block px-[10px] md:px-6'>
+              <p className='max-w-lg whitespace-pre-wrap inherit text-base inline-block px-[10px] md:px-6'>
                 {collection.description}
               </p>
             </div>

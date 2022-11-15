@@ -7,7 +7,6 @@ import GalleryCard from '../components/Gallery/GalleryCard.server';
 import { Layout } from '../components/Global/Layout.server';
 
 export default function Gallery() {
-
   const galleryText = response.data.galleryTextCollection.items;
 
   const firstCol = response.data.firstGalleryColumnCollection.items;
@@ -30,7 +29,7 @@ export default function Gallery() {
             <h1 className='font-medium text-[32px] md:text-7xl'>
               {item.title}
             </h1>
-            <p className='text-lg'>{item.introText}</p>
+            <p className='text-base'>{item.introText}</p>
           </div>
         ))}
       </header>
