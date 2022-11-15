@@ -17,7 +17,7 @@ export default function ProductDetails({ product }) {
   return (
     <ProductOptionsProvider data={product}>
       <section className='w-full overflow-x-hidden gap-4 md:gap-8 grid border-b border-black'>
-        <div className='grid items-start md:grid-cols-2 lg:grid-cols-3 divide-x divide-black'>
+        <div className='grid items-start md:grid-cols-2 lg:grid-cols-3 md: divide-x md:divide-black'>
           <div className='grid md:grid-flow-row gap-[1px] md:p-0 md:overflow-x-auto md:grid-cols-2 md:w-full lg:col-span-2 bg-black'>
             <div className='md:col-span-2 snap-center card-image aspect-square md:w-full w-[80vw]'>
               <ProductGallery media={product.media.nodes} />
@@ -157,8 +157,9 @@ function OptionRadio({ values, name }) {
               onChange={() => setSelectedOption(name, value)}
             />
             <div
-              className={`flex flex-col leading-none rounded-sm px-6 py-6 border-[2px] bg-[#eaeaea] cursor-pointer transition-all duration-200 ${checked ? 'border-black' : 'border-[#eaeaea]'
-                }`}
+              className={`flex flex-col leading-none rounded-sm px-6 py-6 border-[2px] bg-[#eaeaea] cursor-pointer transition-all duration-200 ${
+                checked ? 'border-black' : 'border-[#eaeaea]'
+              }`}
             >
               <p className='font-medium'>{value}</p>
             </div>
@@ -191,8 +192,9 @@ function ProductGallery({ media }) {
 
         return (
           <div
-            className={`${i % 3 === 0 ? 'md:col-span-1' : 'md:col-span-1'
-              } snap-center card-image bg-white aspect-square md:w-full w-[80vw]`}
+            className={`${
+              i % 3 === 0 ? 'md:col-span-1' : 'md:col-span-1'
+            } snap-center card-image bg-white aspect-square md:w-full w-[80vw]`}
             key={med.id || med.image.id}
           >
             <MediaFile
