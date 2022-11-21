@@ -48,7 +48,7 @@ export function Layout({ children }) {
           }}
         />
       </Suspense>
-      <div className='flex flex-col min-h-screen antialiased bg-neutral-50 overflow-hidden'>
+      <div className='flex flex-col min-h-screen antialiased bg-white overflow-hidden'>
         <div className=''>
           <a href='#mainContent' className='sr-only'>
             Skip to content

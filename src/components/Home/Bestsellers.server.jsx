@@ -25,17 +25,13 @@ export default function Bestsellers() {
 const BESTSELLER_QUERY = gql`
   query Bestsellers {
     collection(handle: "textures") {
-      title
-      handle
       products(first: 4) {
         nodes {
           id
           title
-          publishedAt
           handle
           variants(first: 1) {
             nodes {
-              id
               image {
                 url
                 width
@@ -43,10 +39,6 @@ const BESTSELLER_QUERY = gql`
                 altText
               }
               priceV2 {
-                amount
-                currencyCode
-              }
-              compareAtPriceV2 {
                 amount
                 currencyCode
               }

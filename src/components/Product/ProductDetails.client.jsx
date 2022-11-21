@@ -28,7 +28,6 @@ export default function ProductDetails({ product }) {
               <h1 className='text-[32px] md:text-7xl font-medium whitespace-normal'>
                 {product.title}
               </h1>
-              {/* <h2 className='mt-4 font-medium text-2xl'>{product.vendor}</h2> */}
               <PriceVariants />
             </div>
             <ProductForm product={product} />
