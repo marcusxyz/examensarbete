@@ -40,7 +40,7 @@ export default function ExploreSection() {
                   </h4>
                   <Link
                     className='hover:underline'
-                    to={item.imageTextureLink}
+                    to={item.imageTextureUrl}
                     target='_blank'
                   >
                     {item.imageTextureLink}
@@ -98,6 +98,7 @@ const EXPLORE_QUERY = `{
       buttonLink
       imageTextureName
       imageTextureLink
+      imageTextureUrl
       imageTakenFrom
       image {
         url
