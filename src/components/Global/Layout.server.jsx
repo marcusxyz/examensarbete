@@ -6,9 +6,6 @@ import { fetchContentfulQuery } from '../../api/fetchContentfulQuery';
 import Header from './Header.client';
 import Footer from './Footer.server';
 
-/**
- * A server component that defines a structure and organization of a page that can be used in different parts of the Hydrogen app
- */
 export function Layout({ children }) {
   const {
     data: { shop },
@@ -16,10 +13,6 @@ export function Layout({ children }) {
     query: SHOP_QUERY,
     cache: CacheLong(),
   });
-
-  // const { data: contentfulData } = useContentfulQuery({
-  //   query: GET_CONTENTFUL_QUERY,
-  // });
 
   const data = response.data;
 

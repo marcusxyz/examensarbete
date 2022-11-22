@@ -23,68 +23,70 @@ export default function Gallery() {
           }}
         />
       </Suspense>
-      <header className='pt-12 pb-8 px-[10px] md:px-6 md:pt-16'>
+      <Suspense fallback={`Loading gallery...`}>
+        <header className='pt-12 pb-8 px-[10px] md:px-6 md:pt-16'>
+          {galleryText.map((item) => (
+            <div className='w-auto md:w-[75%] lg:w-[50%] flex flex-col gap-4'>
+              <h1 className='font-medium text-[32px] md:text-7xl'>
+                {item.title}
+              </h1>
+              <p className='text-base'>{item.introText}</p>
+            </div>
+          ))}
+        </header>
+
+        <section className='mt-5 mb-8 px-[10px] md:px-6'>
+          <div className='flex flex-col gap-6 lg:flex-row flex-wrap'>
+            <div className='md:flex-1'>
+              {firstCol.map((item) => (
+                <GalleryCard
+                  src={item.image.url}
+                  alt={item.image.description}
+                  name={item.author}
+                  btnText={item.linkText}
+                  url={item.linkUrl}
+                  fabric={item.productsUsed}
+                />
+              ))}
+            </div>
+            <div className='md:flex-1'>
+              {secondCol.map((item) => (
+                <GalleryCard
+                  src={item.image.url}
+                  alt={item.image.description}
+                  name={item.author}
+                  btnText={item.linkText}
+                  url={item.linkUrl}
+                  fabric={item.productsUsed}
+                />
+              ))}
+            </div>
+            <div className='md:flex-1'>
+              {thirdCol.map((item) => (
+                <GalleryCard
+                  src={item.image.url}
+                  alt={item.image.description}
+                  name={item.author}
+                  btnText={item.linkText}
+                  url={item.linkUrl}
+                  fabric={item.productsUsed}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
         {galleryText.map((item) => (
-          <div className='w-auto md:w-[75%] lg:w-[50%] flex flex-col gap-4'>
-            <h1 className='font-medium text-[32px] md:text-7xl'>
-              {item.title}
-            </h1>
-            <p className='text-base'>{item.introText}</p>
+          <div className='border-y border-black py-8 md:py-12 px-[10px] md:px-6'>
+            <div className='w-auto md:w-[50%]'>
+              <h3 className='text-2xl font-medium md:text-[56px] pb-2 leading-tight'>
+                {item.outroTitle}
+              </h3>
+              <p>{item.outroText}</p>
+            </div>
           </div>
         ))}
-      </header>
-
-      <section className='mt-5 mb-8 px-[10px] md:px-6'>
-        <div className='flex flex-col gap-6 lg:flex-row flex-wrap'>
-          <div className='md:flex-1'>
-            {firstCol.map((item) => (
-              <GalleryCard
-                src={item.image.url}
-                alt={item.image.description}
-                name={item.author}
-                btnText={item.linkText}
-                url={item.linkUrl}
-                fabric={item.productsUsed}
-              />
-            ))}
-          </div>
-          <div className='md:flex-1'>
-            {secondCol.map((item) => (
-              <GalleryCard
-                src={item.image.url}
-                alt={item.image.description}
-                name={item.author}
-                btnText={item.linkText}
-                url={item.linkUrl}
-                fabric={item.productsUsed}
-              />
-            ))}
-          </div>
-          <div className='md:flex-1'>
-            {thirdCol.map((item) => (
-              <GalleryCard
-                src={item.image.url}
-                alt={item.image.description}
-                name={item.author}
-                btnText={item.linkText}
-                url={item.linkUrl}
-                fabric={item.productsUsed}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {galleryText.map((item) => (
-        <div className='border-y border-black py-8 md:py-12 px-[10px] md:px-6'>
-          <div className='w-auto md:w-[50%]'>
-            <h3 className='text-2xl font-medium md:text-[56px] pb-2 leading-tight'>
-              {item.outroTitle}
-            </h3>
-            <p>{item.outroText}</p>
-          </div>
-        </div>
-      ))}
+      </Suspense>
     </Layout>
   );
 }

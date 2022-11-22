@@ -37,28 +37,30 @@ export default function ProductList() {
       <Suspense>
         <Seo type='collection' data={collection} />
       </Suspense>
-      <header className='grid w-full gap-8 mt-12 md:mt-16 pb-8 lg:justify-items-start border-b border-black'>
-        <h1 className='text-7xl whitespace-pre-wrap font-medium inline-block px-[10px] md:px-6'>
-          {collection.title}
-        </h1>
-        {collection.description && (
-          <div className='flex items-baseline justify-between w-full'>
-            <div className=''>
-              <p className='max-w-lg whitespace-pre-wrap inherit text-base inline-block px-[10px] md:px-6'>
-                {collection.description}
-              </p>
+      <Suspense fallback={`Loading all products...`}>
+        <header className='grid w-full gap-8 mt-12 md:mt-16 pb-8 lg:justify-items-start border-b border-black'>
+          <h1 className='text-7xl whitespace-pre-wrap font-medium inline-block px-[10px] md:px-6'>
+            {collection.title}
+          </h1>
+          {collection.description && (
+            <div className='flex items-baseline justify-between w-full'>
+              <div className=''>
+                <p className='max-w-lg whitespace-pre-wrap inherit text-base inline-block px-[10px] md:px-6'>
+                  {collection.description}
+                </p>
+              </div>
             </div>
-          </div>
-        )}
-      </header>
+          )}
+        </header>
 
-      <section className='pb-24 mr-[-1px]'>
-        <div className='grid bg-grid-pattern-mobile shadow-[0_0_0_1px_black] md:bg-grid-pattern-tablet lg:bg-grid-pattern-desktop pr-[1px] gap-[1px] grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-          {collection.products.nodes.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </section>
+        <section className='pb-24 mr-[-1px]'>
+          <div className='grid bg-grid-pattern-mobile shadow-[0_0_0_1px_black] md:bg-grid-pattern-tablet lg:bg-grid-pattern-desktop pr-[1px] gap-[1px] grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+            {collection.products.nodes.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </section>
+      </Suspense>
     </Layout>
   );
 }

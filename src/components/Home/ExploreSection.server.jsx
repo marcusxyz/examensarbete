@@ -75,7 +75,7 @@ export default function ExploreSection() {
                   <ButtonSmall to={item.buttonLink} btnName={item.buttonText} />
                 </div>
               </div>
-              <div className='px-[10px] md:px-6 pt-6 pb-8 md:pb-6 border-y border-black'>
+              <div className='px-[10px] md:px-6 py-8 md:py-12 border-y border-black'>
                 <p className='lg:max-w-[70%] xl:max-w-[50%]'>
                   {item.paragraph}
                 </p>

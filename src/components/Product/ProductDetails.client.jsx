@@ -2,7 +2,6 @@ import {
   ProductOptionsProvider,
   MediaFile,
   useProductOptions,
-  ProductPrice,
   AddToCartButton,
 } from '@shopify/hydrogen';
 
@@ -12,8 +11,6 @@ import { Drawer, useDrawer } from '../Cart/Drawer.client';
 import { CartDetails } from '../Cart/CartDetails.client';
 
 export default function ProductDetails({ product }) {
-  console.log(product);
-
   return (
     <ProductOptionsProvider data={product}>
       <section className='w-full overflow-x-hidden gap-4 md:gap-8 grid border-b border-black'>
@@ -47,7 +44,6 @@ export default function ProductDetails({ product }) {
 // Change layout for price and product variants
 
 function ProductForm({ product }) {
-  // const { options, selectedVariant } = useProductOptions();
   const { options, selectedVariant } = useProductOptions();
 
   const productPrice = product.variants.nodes[0].priceV2.amount;
