@@ -11,6 +11,7 @@ import { Suspense } from 'react';
 import { Layout } from '../../components/Global/Layout.server';
 import ProductDetails from '../../components/Product/ProductDetails.client';
 
+// Product detail page
 export default function Product({ params }) {
   const { handle } = useRouteParams();
 
@@ -35,7 +36,9 @@ export default function Product({ params }) {
       <Suspense>
         <Seo type='product' data={product} />
       </Suspense>
-      <ProductDetails product={product} />
+      <Suspense fallback={`Loading product...`}>
+        <ProductDetails product={product} />
+      </Suspense>
     </Layout>
   );
 }

@@ -1,6 +1,6 @@
 {
-  "name": "testing-hydrogen",
-  "description": "An example using JavaScript in Hydrogen",
+  "name": "texture-supply",
+  "description": "A headless e-commerce project by Amanda & Marcus",
   "version": "0.0.0",
   "license": "MIT",
   "private": true,

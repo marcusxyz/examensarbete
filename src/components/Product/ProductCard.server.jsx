@@ -4,7 +4,6 @@ export default function ProductCard({ product }) {
   const { priceV2: price } = product.variants?.nodes[0] || {};
 
   const amount = price?.amount;
-  const alternativeImage = product.variants.nodes[0];
 
   return (
     <Link to={`products/${product.handle}`} className='group'>
