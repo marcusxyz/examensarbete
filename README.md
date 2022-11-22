@@ -1,37 +1,28 @@
-# JavaScript Example
+<img src="https://viz.guru/wp-content/uploads/2019/11/Kitchen_1.jpg" width="100%">
 
-Hydrogen is a React framework and SDK that you can use to build fast and dynamic Shopify custom storefronts.
+# Headless e-commerce for Texture Supply
 
-[Check out the docs](https://shopify.dev/custom-storefronts/hydrogen)
+A major degree project by Marcus & [Amanda](https://github.com/amandahulten). The goal was to create a headless e-commerce, with the help of Shopify and it's latest React framework Hydrogen.
 
-[Run this template in JavaScript on StackBlitz](https://stackblitz.com/github/Shopify/hydrogen/tree/dist/templates/hello-world-js?file=package.json)
+## About Texture Supply
+Texture Supply offers photorealism with high-resolution textures and dirt maps for the CGI industry.
 
-[Run this template in TypeScript on StackBlitz](https://stackblitz.com/github/Shopify/hydrogen/tree/dist/templates/hello-world-js?file=package.json)
-
-## Getting started
+## Installation
 
 **Requirements:**
 
 - Node.js version 16.14.0 or higher
-- Yarn
+- NPM or Yarn
 
+1. Clone this project
 ```bash
-npm init @shopify/hydrogen@latest --template hello-world-ts
+git clone https://github.com/marcusxyz/examensarbete.git
+```
+2. Ask one of us for environment variables
+
+3. Preview the website locally
+```bash
+npm run dev
 ```
 
-Remember to update `hydrogen.config.js` with your shop's domain and Storefront API token!
-
-## Building for production
-
-```bash
-yarn build
-```
-
-## Previewing a production build
-
-To run a local preview of your Hydrogen app in an environment similar to Oxygen, build your Hydrogen app and then run `yarn preview`:
-
-```bash
-yarn build
-yarn preview
-```
+Special thanks to Texture Supply for letting us develop a concept website for them.
